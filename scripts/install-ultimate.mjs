@@ -49,7 +49,7 @@ const packageJson = {
 fs.writeFileSync(path.join(profileDir, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
 fs.writeFileSync(path.join(profileDir, 'COMPONENTS.json'), `${JSON.stringify(selected, null, 2)}\n`);
 
-const install = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--save-exact'], { cwd: profileDir, stdio: 'inherit' });
+const install = spawnSync('npm', ['install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund', '--save-exact'], { cwd: profileDir, stdio: 'inherit' });
 if (install.status !== 0) process.exit(install.status || 1);
 console.log(`Installed ${selected.length} selected components into ${profileDir}`);
 console.log('Credentials and provider settings were not created or copied. Configure them in your local DSH runtime.');
