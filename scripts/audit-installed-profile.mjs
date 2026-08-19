@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const args = process.argv.slice(2);
-let profileDir = path.join(process.env.HOME || '', '.dsh', 'profiles', 'web');
+const homeDirectory = process.env.HOME || process.env.USERPROFILE || os.homedir();
+let profileDir = path.join(homeDirectory, '.dsh', 'profiles', 'web');
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--profile-dir') profileDir = path.resolve(args[++i] || '');
   else if (args[i] === '--help' || args[i] === '-h') {

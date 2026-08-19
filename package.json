@@ -31,6 +31,7 @@
     "UPSTREAM.md",
     "profile",
     "scripts",
-    "tests"
+    "tests",
+    "windows"
   ]
 }

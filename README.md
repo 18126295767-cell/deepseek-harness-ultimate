@@ -46,6 +46,20 @@ The installer writes a clean profile manifest and fetches only the selected
 upstream repositories. Configure providers and API keys in the local runtime;
 never commit them to this repository.
 
+## Windows package
+
+Windows 10/11 x64 is supported by the `windows/` profile installer. It is a
+Windows packaging layer for the same reproducible Node profile, not a claim
+that macOS-only control plugins work on Windows. Run
+`windows/bootstrap-build-environment.ps1` to prepare Git, Node.js LTS, NSIS,
+and an optional official DSH runtime. Then run
+`windows/install-ultimate.ps1` to install the profile, or use the ZIP/NSIS
+artifacts produced by `windows/build-release.ps1`. The repository's
+`windows-v*` workflow builds those artifacts on a real `windows-2025` runner.
+
+Read the [Windows guide](windows/README.md) or the
+[中文 Windows 指南](windows/README.zh-CN.md) for the complete setup.
+
 ## Licensing and redistribution
 
 The installer and manifests in this repository are MIT-licensed. Components

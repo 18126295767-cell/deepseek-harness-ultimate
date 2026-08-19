@@ -44,6 +44,18 @@ node scripts/install-ultimate.mjs --profile-dir "$HOME/.dsh/profiles/ultimate"
 安装器会写入干净的配置清单，只从指定的上游仓库获取所选组件。请在本地运行时配置
 模型供应商和 API 密钥，绝不要把它们提交到本仓库。
 
+## Windows 安装包
+
+Windows 10/11 x64 通过 `windows/` profile 安装层支持。它是同一套可复现 Node profile
+的 Windows 打包方式，不代表 macOS 专用控制插件可以在 Windows 上运行。执行
+`windows/bootstrap-build-environment.ps1` 可准备 Git、Node.js LTS、NSIS，以及可选的
+官方 DSH runtime；再执行 `windows/install-ultimate.ps1` 安装 profile，或使用
+`windows/build-release.ps1` 生成的 ZIP/NSIS 安装包。仓库的 `windows-v*` 工作流会在真实
+`windows-2025` runner 上构建这些产物。
+
+完整步骤见 [中文 Windows 指南](windows/README.zh-CN.md)，英文说明见
+[Windows guide](windows/README.md)。
+
 ## 许可证与再发布
 
 本仓库中的安装器和清单采用 MIT 许可证。`profile/manifest.json` 中的组件仍分别采用

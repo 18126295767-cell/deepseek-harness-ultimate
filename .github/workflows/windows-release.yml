@@ -1,0 +1,71 @@
+name: Windows Ultimate Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Windows package version"
+        required: true
+        default: "1.0.0"
+  push:
+    tags:
+      - "windows-v*"
+
+permissions:
+  contents: write
+
+jobs:
+  windows-x64:
+    runs-on: windows-2025
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+          cache: npm
+
+      - name: Install dependencies and run tests
+        shell: pwsh
+        run: |
+          npm ci --ignore-scripts
+          npm test
+          npm run audit
+
+      - name: Install NSIS
+        shell: pwsh
+        run: choco install nsis --no-progress --yes
+
+      - name: Validate PowerShell entry points
+        shell: pwsh
+        run: |
+          foreach ($file in Get-ChildItem .\windows -Filter *.ps1) {
+            $tokens = $null
+            $parseErrors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$tokens, [ref]$parseErrors) | Out-Null
+            if ($parseErrors) { throw "PowerShell parse failed: $($file.Name)" }
+          }
+          & .\windows\install-ultimate.ps1 -DryRun
+
+      - name: Build Windows packages
+        shell: pwsh
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+          TAG_VERSION: ${{ github.ref_name }}
+        run: |
+          $version = if ($env:INPUT_VERSION) { $env:INPUT_VERSION } elseif ($env:TAG_VERSION -match '^windows-v(.+)$') { $Matches[1] } else { '1.0.0' }
+          & .\windows\build-release.ps1 -Version $version -OutputDirectory .\releases
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: deepseek-harness-ultimate-windows-x64
+          path: releases/*
+
+      - name: Publish GitHub release for a Windows tag
+        if: startsWith(github.ref, 'refs/tags/windows-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: releases/*

@@ -1,5 +1,6 @@
 node_modules/
 .dsh-ultimate/
 dist/
+releases/
 *.log
 .DS_Store

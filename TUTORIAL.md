@@ -56,6 +56,45 @@ with the same manifest commits should produce the same dependency requests.
 Review `npm ls --depth=0` in the profile directory and compare
 `COMPONENTS.json` with `profile/manifest.json`.
 
+## Windows setup and package
+
+On Windows 10/11 x64, install PowerShell 5.1/7 and Node.js 22+. To prepare a
+build machine, run:
+
+```powershell
+Set-Location windows
+& .\bootstrap-build-environment.ps1
+```
+
+This uses `winget` for Git, Node.js LTS, and NSIS and installs the official
+`@deepseek-ai/dsh@0.1.0-rc.7` runtime under `%USERPROFILE%\dsh-runtime`. Use
+`-SkipRuntime` when a runtime is already managed elsewhere. Reopen PowerShell
+after installers change `PATH`.
+
+From the repository root, install the default profile:
+
+```powershell
+& .\windows\install-ultimate.ps1
+```
+
+The default destination is `%USERPROFILE%\.dsh\profiles\ultimate`. Use
+`-DryRun` to inspect the selected commit pins without downloading packages and
+`-IncludeOptional` to opt into optional components. The script delegates to the
+same Node installer as macOS/Linux, including `--ignore-scripts` and
+`--legacy-peer-deps`.
+
+Build a portable ZIP, per-user NSIS installer, and SHA-256 manifest on Windows:
+
+```powershell
+Set-Location windows
+& .\build-release.ps1 -Version 1.0.0
+```
+
+The release workflow repeats the tests, manifest audit, PowerShell smoke check,
+and package build on `windows-2025`. A successful CI build proves the package
+can be assembled on Windows; it does not prove provider login or network
+behavior, which must be tested with user-owned runtime settings.
+
 ## Licensing
 
 The installer and manifests are MIT-licensed. Fetched packages remain under
