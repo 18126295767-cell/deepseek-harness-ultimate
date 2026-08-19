@@ -18,7 +18,7 @@ node scripts/install-ultimate.mjs \
   --profile-dir "$HOME/.dsh/profiles/ultimate"
 ```
 
-安装器使用 `profile/manifest.json` 中的提交固定值，以 `--ignore-scripts` 运行 npm，
+安装器使用 `profile/manifest.json` 中的提交固定 GitHub 归档地址，以 `--ignore-scripts` 运行 npm，
 只写入指定配置目录。它不会读取或传输 API 密钥、电话号码、邮箱、浏览器会话或私有文件。
 
 ## 添加可选集成

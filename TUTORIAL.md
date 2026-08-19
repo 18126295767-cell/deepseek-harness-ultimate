@@ -19,8 +19,8 @@ node scripts/install-ultimate.mjs \
   --profile-dir "$HOME/.dsh/profiles/ultimate"
 ```
 
-The installer uses the commit pins in `profile/manifest.json`, runs npm with
-`--ignore-scripts`, and writes only to the profile directory. It does not read
+The installer uses commit-pinned GitHub archive URLs from `profile/manifest.json`,
+runs npm with `--ignore-scripts`, and writes only to the profile directory. It does not read
 or transmit API keys, phone numbers, email addresses, browser sessions, or
 private files.
 
