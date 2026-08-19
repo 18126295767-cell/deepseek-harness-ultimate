@@ -1,0 +1,8 @@
+DeepSeek Harness Ultimate is an independent community profile and installer.
+
+It is not an official product of DeepSeek AI and does not include the
+DeepSeek Harness source code or third-party plugin source code. The installer
+fetches selected components from their upstream repositories at pinned commits.
+
+Third-party components retain their own copyright notices and licenses. See
+COMPONENTS.md and UPSTREAM.md before redistributing a build that contains them.

@@ -1,0 +1,5 @@
+node_modules/
+.dsh-ultimate/
+dist/
+*.log
+.DS_Store
