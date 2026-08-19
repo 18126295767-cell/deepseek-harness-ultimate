@@ -9,6 +9,8 @@ that an upstream project is unsafe or unusable.
 | `dsh-agent-teams` | Functional overlap with Agent Team GUI; no need to install two team abstractions by default. |
 | `plugin-team-board` | Tracking surface only; the selected workflow/team tools already provide execution and observation. |
 | `dsh-model-failover` | Package declares MIT but the installed package snapshot lacks a license file; hold until upstream license notice is confirmed in the exact release. |
+| `dsh-routines` | Repository does not expose a root `package.json` at the audited commit; not installable by the generic npm Git installer yet. |
+| `@dsh-voice/bundle` | Repository does not expose a root `package.json` at the audited commit; requires a package-subdirectory install rule before inclusion. |
 | `@dsh-external/dsh-session-manager` | Installed snapshot has MIT text but no stable public upstream repository was recorded in the local audit. |
 | `@dsh-external/dsh-diff-viewer` | BSD-3-Clause metadata was present, but no public upstream source/notice was recorded in the installed snapshot. |
 | `@dsh-external/dsh-super-injector` | BSD-3-Clause but local-only link from `dsh-routing-suite`; not reproducible from a public upstream URL. |

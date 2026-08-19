@@ -61,7 +61,7 @@
     {
       "name": "dsh-agent-team-gui",
       "package": "dsh-agent-team-gui",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "license": "MIT",
       "repository": "https://github.com/toolclub/dsh-agent-team-gui.git",
       "commit": "3b56aa4dbe20cc128d710928d20c80404ec7fff6",
@@ -101,7 +101,7 @@
     {
       "name": "dsh-memento",
       "package": "dsh-memento",
-      "version": "0.3.3",
+      "version": "0.4.2",
       "license": "Apache-2.0",
       "repository": "https://github.com/PerryLink/dsh-memento.git",
       "commit": "ff92ee95b543384bfd686d7a9f06a99bdf707084",
@@ -111,7 +111,7 @@
     {
       "name": "dsh-backup",
       "package": "dsh-backup",
-      "version": "0.2.0",
+      "version": "0.5.0",
       "license": "MIT",
       "repository": "https://github.com/xiaoyuyu6420/dsh-backup.git",
       "commit": "e1b94e43a19f654a23179cbd00fea5fad44c88d6",
@@ -121,7 +121,7 @@
     {
       "name": "dsh-bookmarks",
       "package": "dsh-bookmarks",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "repository": "https://github.com/penguin-oo/dsh-bookmarks.git",
       "commit": "ebc716372d70f3e0cd73814632a5eb7e678f5f3b",
@@ -131,7 +131,7 @@
     {
       "name": "dsh-client-auto-continue",
       "package": "dsh-client-auto-continue",
-      "version": "0.4.0",
+      "version": "0.7.0",
       "license": "MIT",
       "repository": "https://github.com/HsiangNianian/dsh-auto-continue.git",
       "commit": "fb1d405e9e99044f07601b985099d584b3a5d922",
@@ -161,7 +161,7 @@
     {
       "name": "dsh-notifier",
       "package": "dsh-notifier",
-      "version": "0.2.0",
+      "version": "0.8.4",
       "license": "MIT",
       "repository": "https://github.com/THEWOLFWALKER/dsh-notifier.git",
       "commit": "cc4781e9939210b2d91b63f5448ccef40708a7c2",
@@ -173,7 +173,7 @@
     {
       "name": "keyringseam",
       "package": "keyringseam",
-      "version": "0.1.3",
+      "version": "0.2.0-rc.1",
       "license": "MIT",
       "repository": "https://github.com/fieldnote-ops/keyringseam.git",
       "commit": "22fdc53f882d55cb865511247622af51d2344796",
@@ -183,8 +183,8 @@
     },
     {
       "name": "dsh-reverse-skill",
-      "package": "dsh-reverse-skill",
-      "version": "reviewed-source",
+      "package": "@dhicoc/dsh-reverse-skill",
+      "version": "1.0.2",
       "license": "MIT",
       "repository": "https://github.com/dhicoc/dsh-reverse-skill.git",
       "commit": "eaea02535d311373a2b670a76c446825acfe4b0d",
@@ -195,8 +195,8 @@
     },
     {
       "name": "dsh-wuyun-liuqi",
-      "package": "dsh-wuyun-liuqi",
-      "version": "reviewed-source",
+      "package": "@dhicoc/dsh-wuyun-liuqi",
+      "version": "1.0.4",
       "license": "MIT",
       "repository": "https://github.com/dhicoc/dsh-wuyun-liuqi.git",
       "commit": "9b97e7e1f0dea26cdd0803317a8c47d985390efd",
@@ -205,20 +205,9 @@
       "optional": true
     },
     {
-      "name": "dsh-routines",
-      "package": "dsh-routines",
-      "version": "reviewed-source",
-      "license": "MIT",
-      "repository": "https://github.com/Jesse-njx/dsh-routines.git",
-      "commit": "37164b11690ae9f3f33d6de91ce52a755b3eef64",
-      "category": "automation",
-      "default": false,
-      "optional": true
-    },
-    {
       "name": "dsh-plugin-call-me",
       "package": "dsh-plugin-call-me",
-      "version": "reviewed-source",
+      "version": "0.1.0",
       "license": "MIT",
       "repository": "https://github.com/radres/dsh-plugin-call-me.git",
       "commit": "af1a21bc85ce7a0fe1de85384eb98a8e14ca457c",
@@ -230,8 +219,8 @@
     },
     {
       "name": "dsh-im",
-      "package": "dsh-im",
-      "version": "reviewed-source",
+      "package": "@xmanrui/dsh-im",
+      "version": "0.1.0",
       "license": "MIT",
       "repository": "https://github.com/xmanrui/dsh-im.git",
       "commit": "601271a7f84244cf336a3b37a7d4ff01a54e406c",
@@ -239,18 +228,6 @@
       "default": false,
       "optional": true,
       "requiresCredentials": true
-    },
-    {
-      "name": "@dsh-voice/bundle",
-      "package": "@dsh-voice/bundle",
-      "version": "0.1.0",
-      "license": "MIT",
-      "repository": "https://github.com/Jesse-njx/dsh-voice.git",
-      "commit": "f59b4f03e7b36648b804fd07e57a53e276da5d81",
-      "category": "integrations",
-      "default": false,
-      "optional": true,
-      "requiresPermission": true
     }
   ]
 }
