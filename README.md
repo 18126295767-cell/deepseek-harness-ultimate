@@ -24,7 +24,7 @@ unchanged. Upstream authors keep ownership of their projects and licenses.
 - **Large coding execution:** Agent Team GUI for model/tool routing, TaskSwarm for dependency waves and worktree isolation, Task Planner for experience-aware planning, Proof for read-only acceptance, and Plannotator for plan feedback.
 - **Workflow and reliability:** Workflow orchestration, scheduled automation, Sentinel conditions, model failover, backups, Keychain credentials, and MCP guardrails.
 - **Productivity and UI:** bookmarks, file mentions, auto-continue, global rules, attention status, design skills, writing tools, and the Spotlight surface.
-- **Optional integrations:** notifications, IM bridges, voice/phone tools, reverse-engineering skills, and Chinese medicine skills. These are opt-in because they may require credentials, permissions, or domain-specific review.
+- **Optional integrations:** notifications, IM bridges, voice/phone tools, and authorized security-research skills. These are opt-in because they may require credentials, permissions, or domain-specific review; components without a complete public notice stay excluded.
 
 The default set intentionally chooses one strong implementation per overlapping
 role. For example, TaskSwarm covers dependency waves and isolated worktrees;

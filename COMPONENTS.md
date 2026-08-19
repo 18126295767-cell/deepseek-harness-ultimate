@@ -29,7 +29,6 @@ this repository.
 | `dsh-plugin-call-me` | [radres/dsh-plugin-call-me](https://github.com/radres/dsh-plugin-call-me) | MIT | Phone/text callbacks | Optional; credentials/permission |
 | `@dsh-voice/bundle` | [Jesse-njx/dsh-voice](https://github.com/Jesse-njx/dsh-voice) | MIT | Voice interaction | Optional; permission |
 | `dsh-reverse-skill` | [dhicoc/dsh-reverse-skill](https://github.com/dhicoc/dsh-reverse-skill) | MIT | Authorized security research skills | Optional; authorization |
-| `dsh-wuyun-liuqi` | [dhicoc/dsh-wuyun-liuqi](https://github.com/dhicoc/dsh-wuyun-liuqi) | MIT | Traditional medicine skills | Optional |
 
 The pinned commits are recorded in `profile/manifest.json`. They are audit
 references, not claims that an upstream author endorses this profile.

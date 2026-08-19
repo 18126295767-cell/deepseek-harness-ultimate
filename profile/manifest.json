@@ -194,17 +194,6 @@
       "requiresAuthorization": true
     },
     {
-      "name": "dsh-wuyun-liuqi",
-      "package": "@dhicoc/dsh-wuyun-liuqi",
-      "version": "1.0.4",
-      "license": "MIT",
-      "repository": "https://github.com/dhicoc/dsh-wuyun-liuqi.git",
-      "commit": "9b97e7e1f0dea26cdd0803317a8c47d985390efd",
-      "category": "skills",
-      "default": false,
-      "optional": true
-    },
-    {
       "name": "dsh-plugin-call-me",
       "package": "dsh-plugin-call-me",
       "version": "0.1.0",
