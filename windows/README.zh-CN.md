@@ -1,5 +1,7 @@
 # DeepSeek Harness Ultimate Windows 版
 
+**语言：** 简体中文 · [English](README.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português](README.pt-BR.md) · [Русский](README.ru.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md) · [繁體中文](README.zh-TW.md)
+
 本目录提供可复现的 Windows Ultimate DSH profile 安装包。它安装提交固定的
 profile 脚本，并按需把清单中的上游组件下载到当前用户的 DSH profile。它不是把 DSH
 打包进去的桌面应用，不包含 API 密钥、供应商设置、浏览器会话或第三方源代码。
@@ -57,8 +59,9 @@ Set-Location windows
 & .\build-release.ps1 -Version 1.0.0
 ```
 
-脚本会在 `releases/` 生成便携 ZIP、当前用户 NSIS 安装器和 SHA-256 校验文件。安装器把
-profile 包放入 `%LOCALAPPDATA%\DeepSeek Harness Ultimate`，并创建开始菜单快捷方式来
+脚本会在 `releases/` 生成便携 ZIP、当前用户 NSIS 安装器和 SHA-256 校验文件，同时验证
+12 种语言指南、ZIP 内容、安装器的 Windows 可执行文件头和记录的哈希。安装器把 profile
+包放入 `%LOCALAPPDATA%\DeepSeek Harness Ultimate`，并创建开始菜单快捷方式来
 运行 profile 安装脚本。profile 本身位于 DSH profile 目录，卸载本安装包不会删除它。
 
 ## 与 DSH 配合使用

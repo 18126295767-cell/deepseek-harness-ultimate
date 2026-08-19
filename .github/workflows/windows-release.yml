@@ -48,6 +48,8 @@ jobs:
             if ($parseErrors) { throw "PowerShell parse failed: $($file.Name)" }
           }
           & .\windows\install-ultimate.ps1 -DryRun
+          $guideCount = @(Get-ChildItem .\windows -Filter "README*.md" -File).Count
+          if ($guideCount -ne 12) { throw "Expected 12 Windows language guides, found $guideCount." }
 
       - name: Build Windows packages
         shell: pwsh

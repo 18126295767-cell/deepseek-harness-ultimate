@@ -1,5 +1,7 @@
 # DeepSeek Harness Ultimate for Windows
 
+**Language:** [简体中文](README.zh-CN.md) · English · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português](README.pt-BR.md) · [Русский](README.ru.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md) · [繁體中文](README.zh-TW.md)
+
 This package provides a reproducible Windows installer for the Ultimate DSH
 profile. It installs the commit-pinned profile scripts and can then fetch the
 selected upstream packages into a user-owned DSH profile. It is not a bundled
@@ -63,7 +65,8 @@ Set-Location windows
 ```
 
 This creates a portable ZIP, a per-user NSIS installer, and a SHA-256 manifest
-under `releases/`. The installer places the profile package under
+under `releases/`. It verifies all 12 language guides, the ZIP contents, the
+installer's Windows executable header, and the recorded hashes. The installer places the profile package under
 `%LOCALAPPDATA%\DeepSeek Harness Ultimate` and creates a Start Menu shortcut
 that runs the profile installer. The profile itself remains under your DSH
 profile directory and is not removed by uninstalling this package.

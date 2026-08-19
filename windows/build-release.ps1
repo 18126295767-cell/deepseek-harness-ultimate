@@ -31,9 +31,14 @@ $files = @(
   "package.json", "package-lock.json"
 )
 foreach ($file in $files) { Copy-Item -LiteralPath (Join-Path $repo $file) -Destination (Join-Path $stage $file) -Force }
-foreach ($directory in @("profile", "scripts", "tests", "windows")) {
+foreach ($directory in @("profile", "scripts", "tests")) {
   Copy-Item -LiteralPath (Join-Path $repo $directory) -Destination (Join-Path $stage $directory) -Recurse -Force
 }
+New-Item -ItemType Directory -Force -Path (Join-Path $stage "windows") | Out-Null
+Get-ChildItem -LiteralPath $PSScriptRoot -File | Where-Object { $_.Name -notmatch '^README.*\.md$' } |
+  Copy-Item -Destination (Join-Path $stage "windows") -Force
+Get-ChildItem -LiteralPath $PSScriptRoot -Filter "README*.md" -File |
+  Copy-Item -Destination (Join-Path $stage "windows") -Force
 
 $zip = Join-Path $output "DeepSeek-Harness-Ultimate-Windows-x64-v$Version.zip"
 if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip -Force }
@@ -54,6 +59,8 @@ try {
       throw "The portable archive is missing $required."
     }
   }
+  $guideCount = @(Get-ChildItem -LiteralPath (Join-Path $zipCheck "windows") -Filter "README*.md" -File).Count
+  if ($guideCount -lt 12) { throw "Portable ZIP contains only $guideCount language guides; expected at least 12." }
 } finally {
   if (Test-Path -LiteralPath $zipCheck) { Remove-Item -LiteralPath $zipCheck -Recurse -Force }
 }

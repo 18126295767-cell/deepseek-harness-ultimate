@@ -40,4 +40,7 @@ test('Windows package is present and documented', () => {
   const chinese = fs.readFileSync(path.join(root, 'TUTORIAL.zh-CN.md'), 'utf8');
   assert.match(english, /windows(?:\\|\/)install-ultimate\.ps1/);
   assert.match(chinese, /windows\\install-ultimate\.ps1/);
+  const guideCount = fs.readdirSync(path.join(root, 'windows'))
+    .filter((file) => /^README.*\.md$/.test(file)).length;
+  assert.equal(guideCount, 12, 'expected 12 Windows language guides');
 });
