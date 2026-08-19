@@ -2,6 +2,8 @@
 
 **A reproducible, curated DSH profile covering nearly every practical capability category—coding teams, workflow control, safety, research, and daily automation—so you do not have to hunt through repositories one by one.**
 
+Language / 语言: [简体中文](README.zh-CN.md) · [English](README.md)
+
 DeepSeek Harness Ultimate is a community-maintained installer profile for the
 open-source [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 It combines a non-duplicative set of plugins that were reviewed for a clear

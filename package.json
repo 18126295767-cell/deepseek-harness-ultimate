@@ -1,0 +1,36 @@
+{
+  "name": "deepseek-harness-ultimate",
+  "version": "1.0.0",
+  "description": "Curated, commit-pinned installer profile for DeepSeek Harness.",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "author": "Hou Xinran",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/18126295767-cell/deepseek-harness-ultimate.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "audit": "node scripts/audit-manifest.mjs",
+    "audit:installed": "node scripts/audit-installed-profile.mjs"
+  },
+  "files": [
+    "COMPONENTS.md",
+    "EXCLUDED_COMPONENTS.md",
+    "LICENSE",
+    "LICENSE.zh-CN",
+    "NOTICE",
+    "README.md",
+    "README.zh-CN.md",
+    "TUTORIAL.md",
+    "TUTORIAL.zh-CN.md",
+    "UPSTREAM.md",
+    "profile",
+    "scripts",
+    "tests"
+  ]
+}

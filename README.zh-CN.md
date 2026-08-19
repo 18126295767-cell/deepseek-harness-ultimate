@@ -2,6 +2,8 @@
 
 **覆盖几乎所有实用能力类别的可复现 DSH 精选配置——编程团队、工作流控制、安全、研究和日常自动化都已预先整理，不必再逐个仓库寻找。**
 
+语言 / Language: [简体中文](README.zh-CN.md) · [English](README.md)
+
 DeepSeek Harness Ultimate 是面向开源
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的社区维护安装配置。
 它组合了一组经过许可证核对、功能去重的插件，目前只纳入许可证明确为 MIT、Apache-2.0
