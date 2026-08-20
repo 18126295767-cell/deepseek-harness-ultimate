@@ -70,6 +70,14 @@ test('npm subprocess uses the Windows command interpreter', () => {
   assert.deepEqual(npmInvocation('linux'), { command: 'npm', argsPrefix: [] });
 });
 
+test('Windows fallback discovery preserves complete executable paths', () => {
+  for (const file of ['windows/install-ultimate.ps1', 'windows/build-release.ps1']) {
+    const source = fs.readFileSync(path.join(root, file), 'utf8');
+    assert.match(source, /Select-Object -First 1/);
+    assert.doesNotMatch(source, /\$candidates\[0\]/);
+  }
+});
+
 test('lockfile audit rejects ordinary host-core dependencies but permits peers', () => {
   const violations = auditLockfile({
     packages: {

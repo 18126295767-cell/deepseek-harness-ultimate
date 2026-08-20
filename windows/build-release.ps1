@@ -67,11 +67,11 @@ try {
 
 $makensis = Get-Command makensis.exe -ErrorAction SilentlyContinue
 if ($null -eq $makensis) {
-  $candidates = @(
+  $candidate = @(
     (Join-Path ${env:ProgramFiles(x86)} "NSIS\makensis.exe"),
     (Join-Path $env:ProgramFiles "NSIS\makensis.exe")
-  ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
-  if ($candidates.Count -gt 0) { $makensis = Get-Command $candidates[0] }
+  ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -First 1
+  if ($candidate) { $makensis = Get-Command $candidate }
 }
 if ($null -eq $makensis) { throw "NSIS is required to build the installer. Install NSIS first." }
 

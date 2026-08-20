@@ -17,11 +17,11 @@ if ([Environment]::OSVersion.Platform -ne [PlatformID]::Win32NT) {
 function Resolve-NodePath {
   $node = Get-Command node.exe -ErrorAction SilentlyContinue
   if ($null -ne $node) { return $node.Source }
-  $candidates = @(
+  $candidate = @(
     (Join-Path $env:ProgramFiles "nodejs\node.exe"),
     (Join-Path ${env:ProgramFiles(x86)} "nodejs\node.exe")
-  ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
-  if ($candidates.Count -gt 0) { return $candidates[0] }
+  ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -First 1
+  if ($candidate) { return $candidate }
   throw "Node.js 22 or newer was not found. Install Node.js LTS and reopen PowerShell."
 }
 
