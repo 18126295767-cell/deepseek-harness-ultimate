@@ -10,9 +10,22 @@ for (let index = 2; index < process.argv.length; index += 2) {
   args.set(process.argv[index], process.argv[index + 1]);
 }
 
-const baseUrl = args.get('--url') ?? 'http://127.0.0.1:3080/';
+const requestedUrl = args.get('--url') ?? 'http://127.0.0.1:3080/';
 const outputDirectory = path.resolve(args.get('--output') ?? 'windows-screenshots');
 const viewport = { width: 1600, height: 1000 };
+
+const parsedUrl = new URL(requestedUrl);
+if (
+  parsedUrl.protocol !== 'http:'
+  || parsedUrl.hostname !== '127.0.0.1'
+  || parsedUrl.username
+  || parsedUrl.password
+  || parsedUrl.search
+  || parsedUrl.hash
+) {
+  throw new Error('Screenshot URL must be a credential-free http://127.0.0.1 loopback address.');
+}
+const baseUrl = parsedUrl.href;
 
 await fs.mkdir(outputDirectory, { recursive: true });
 
@@ -32,10 +45,24 @@ async function settle() {
   await page.waitForTimeout(500);
 }
 
+function validatePng(bytes, name) {
+  const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  if (bytes.length < 24 || !bytes.subarray(0, 8).equals(signature)) {
+    throw new Error(`${name} is not a valid PNG file.`);
+  }
+  const width = bytes.readUInt32BE(16);
+  const height = bytes.readUInt32BE(20);
+  if (width !== viewport.width || height !== viewport.height) {
+    throw new Error(`${name} is ${width}x${height}; expected ${viewport.width}x${viewport.height}.`);
+  }
+  return { width, height };
+}
+
 async function capture(name) {
   await settle();
   const file = path.join(outputDirectory, name);
   await page.screenshot({ path: file, animations: 'disabled' });
+  validatePng(await fs.readFile(file), name);
   return file;
 }
 
@@ -73,8 +100,10 @@ try {
   const screenshots = [];
   for (const file of files) {
     const bytes = await fs.readFile(file);
+    const dimensions = validatePng(bytes, path.basename(file));
     screenshots.push({
       file: path.basename(file),
+      ...dimensions,
       bytes: bytes.length,
       sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
     });
@@ -90,6 +119,7 @@ try {
     commit: process.env.GITHUB_SHA ?? null,
     baseUrl,
     viewport,
+    browserProfile: 'fresh non-persistent Playwright context',
     userAgent: await page.evaluate(() => navigator.userAgent),
     screenshots,
   };

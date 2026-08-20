@@ -121,3 +121,16 @@ test('all languages include the privacy-safe macOS and Windows screenshot galler
     assert.match(read(fileFor('TUTORIAL', locale)), /assets\/screenshots\/windows-05-plugin-inventory\.png/);
   }
 });
+
+test('Windows screenshot evidence is isolated and dimension-verified', () => {
+  const capture = read('scripts/capture-windows-ui.mjs');
+  const workflow = read('.github/workflows/windows-release.yml');
+
+  assert.match(capture, /parsedUrl\.hostname !== '127\.0\.0\.1'/);
+  assert.match(capture, /validatePng/);
+  assert.match(capture, /width !== viewport\.width \|\| height !== viewport\.height/);
+  assert.match(capture, /browserProfile: 'fresh non-persistent Playwright context'/);
+  assert.match(capture, /windows-screenshot-proof\.json/);
+  assert.match(workflow, /windows-2025/);
+  assert.match(workflow, /deepseek-harness-ultimate-windows-screenshots/);
+});
