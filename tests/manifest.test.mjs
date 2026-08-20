@@ -26,6 +26,13 @@ test('default components have no optional-only marker', () => {
   assert.ok(manifest.components.some((component) => component.default));
 });
 
+test('generated profile includes the official base and Web app layers first', () => {
+  const source = fs.readFileSync(path.join(root, 'scripts', 'install-ultimate.mjs'), 'utf8');
+  assert.match(source, /const hostBundles = \['@deepseek-ai\/dsh-base', '@deepseek-ai\/dsh-web-app'\]/);
+  assert.match(source, /bundles: \[\.\.\.hostBundles, \.\.\.selected\.map/);
+  assert.match(source, /if \(!fs\.existsSync\(patchPath\)\)/);
+});
+
 test('Windows package is present and documented', () => {
   for (const file of [
     'windows/bootstrap-build-environment.ps1',
@@ -46,6 +53,9 @@ test('Windows package is present and documented', () => {
   const guideCount = fs.readdirSync(path.join(root, 'windows'))
     .filter((file) => /^README.*\.md$/.test(file)).length;
   assert.equal(guideCount, 12, 'expected 12 Windows language guides');
+  const workflow = fs.readFileSync(path.join(root, '.github/workflows/windows-release.yml'), 'utf8');
+  assert.match(workflow, /--profile ultimate --dump-default-config/);
+  assert.match(workflow, /@deepseek-ai\/dsh-web-app/);
 });
 
 test('Windows selection excludes macOS-only components', () => {

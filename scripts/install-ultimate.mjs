@@ -37,6 +37,7 @@ if (audit.status !== 0) { process.stderr.write(audit.stderr || audit.stdout); pr
 
 const selected = selectComponents(manifest, { includeOptional, requested, platform: targetPlatform });
 if (!selected.length) throw new Error('No components selected');
+const hostBundles = ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app'];
 if (dryRun) {
   console.log(JSON.stringify({ profileDir, platform: targetPlatform, selected: selected.map((component) => ({ package: component.package, repository: component.repository, commit: component.commit })) }, null, 2));
   process.exit(0);
@@ -50,7 +51,7 @@ const packageJson = {
     const repoPath = component.repository.replace('https://github.com/', '').replace(/\.git$/, '');
     return [component.package, `https://github.com/${repoPath}/archive/${component.commit}.tar.gz`];
   })),
-  dsh: { profile: { bundles: selected.map((component) => component.package) } },
+  dsh: { profile: { bundles: [...hostBundles, ...selected.map((component) => component.package)] } },
   ultimate: { manifest: 'https://github.com/18126295767-cell/deepseek-harness-ultimate/blob/main/profile/manifest.json' }
 };
 const preflightDir = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-ultimate-preflight-'));
@@ -78,6 +79,10 @@ fs.mkdirSync(profileDir, { recursive: true });
 fs.writeFileSync(path.join(profileDir, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
 fs.writeFileSync(path.join(profileDir, 'COMPONENTS.json'), `${JSON.stringify(selected, null, 2)}\n`);
 fs.writeFileSync(path.join(profileDir, 'package-lock.json'), `${JSON.stringify(lockfile, null, 2)}\n`);
+const patchPath = path.join(profileDir, 'cordis.patch.yml');
+if (!fs.existsSync(patchPath)) {
+  fs.writeFileSync(patchPath, '# User overrides are applied after the Ultimate bundle layers.\n[]\n');
+}
 
 const install = spawnSync(npm.command, [...npm.argsPrefix, 'install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: profileDir, stdio: 'inherit' });
 if (install.status !== 0) {
@@ -93,4 +98,5 @@ if (!installedAudit.ok) {
 }
 console.log(`Installed ${selected.length} selected components into ${profileDir}`);
 console.log(`Platform filter: ${targetPlatform}`);
+console.log('Profile entry point: npx --yes @deepseek-ai/dsh@0.1.0-rc.7 --profile ultimate');
 console.log('Credentials and provider settings were not created or copied. Configure them in your local DSH runtime.');

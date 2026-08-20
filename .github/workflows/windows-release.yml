@@ -56,12 +56,19 @@ jobs:
       - name: Reproduce and audit Windows profile
         shell: pwsh
         run: |
-          $profile = Join-Path $env:RUNNER_TEMP "dsh-ultimate-profile"
+          $env:DSH_HOME = Join-Path $env:RUNNER_TEMP "dsh-home"
+          $profile = Join-Path $env:DSH_HOME "profiles\ultimate"
           & .\windows\install-ultimate.ps1 -ProfileDir $profile
           node .\scripts\audit-installed-profile.mjs --profile-dir $profile
           $components = Get-Content (Join-Path $profile "COMPONENTS.json") -Raw | ConvertFrom-Json
           if ($components.package -contains "keyringseam") {
             throw "Windows profile unexpectedly contains macOS-only keyringseam."
+          }
+          $config = npx --yes @deepseek-ai/dsh@0.1.0-rc.7 --profile ultimate --dump-default-config
+          if ($LASTEXITCODE -ne 0) { throw "The generated Ultimate profile could not be composed by DSH." }
+          $configText = $config -join "`n"
+          if ($configText -notmatch '@deepseek-ai/dsh-base' -or $configText -notmatch '@deepseek-ai/dsh-web-app') {
+            throw "The generated Ultimate profile is missing the official base or Web app layer."
           }
 
       - name: Build Windows packages
