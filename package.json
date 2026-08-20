@@ -14,6 +14,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "docs:generate": "node scripts/generate-localized-docs.mjs",
     "test": "node --test",
     "audit": "node scripts/audit-manifest.mjs",
     "audit:installed": "node scripts/audit-installed-profile.mjs"
@@ -24,10 +25,8 @@
     "LICENSE",
     "LICENSE.zh-CN",
     "NOTICE",
-    "README.md",
-    "README.zh-CN.md",
-    "TUTORIAL.md",
-    "TUTORIAL.zh-CN.md",
+    "README*.md",
+    "TUTORIAL*.md",
     "UPSTREAM.md",
     "profile",
     "scripts",

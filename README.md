@@ -1,81 +1,118 @@
 # DeepSeek Harness Ultimate
 
-**A reproducible, curated DSH profile covering nearly every practical capability category—coding teams, workflow control, safety, research, and daily automation—so you do not have to hunt through repositories one by one.**
+**DeepSeek Harness now has more plugins than most people can reasonably compare. Ultimate has already reviewed, pinned, deduplicated, and organized the useful choices, so you can start working instead of spending hours choosing.**
 
-Language / 语言: [简体中文](README.zh-CN.md) · [English](README.md)
+> A reproducible curated DSH profile covering nearly every practical capability category: coding teams, workflow control, safety, research, and daily automation, with no need to search repositories one by one.
 
-DeepSeek Harness Ultimate is a community-maintained installer profile for the
-open-source [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
-It combines a non-duplicative set of plugins that were reviewed for a clear
-MIT, Apache-2.0, or BSD-3-Clause license. The repository contains the manifest,
-audit rules, and installer only; it does not redistribute third-party source,
-`node_modules`, API keys, phone numbers, email addresses, sessions, or private
-configuration.
+**Languages:** English · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português (Brasil)](README.pt-BR.md) · [Русский](README.ru.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [العربية](README.ar.md) · [हिन्दी](README.hi.md) · [Italiano](README.it.md) · [Bahasa Indonesia](README.id.md) · [Türkçe](README.tr.md) · [Tiếng Việt](README.vi.md) · [ไทย](README.th.md) · [Polski](README.pl.md) · [Nederlands](README.nl.md) · [Українська](README.uk.md)
 
-“Nearly every” here means the publicly auditable capability categories in this
-profile, not every plugin ever published. This is a curated compatibility profile,
-not an official DeepSeek AI release
-and not a promise that every DSH plugin or every future DSH version will work
-unchanged. Upstream authors keep ownership of their projects and licenses.
+[Beginner tutorial](TUTORIAL.md) · [Windows guide](windows/README.md) · [Component audit](COMPONENTS.md) · [Excluded duplicates](EXCLUDED_COMPONENTS.md)
 
-[中文介绍](README.zh-CN.md) · [English tutorial](TUTORIAL.md) ·
-[中文教程](TUTORIAL.zh-CN.md) · [Component audit](COMPONENTS.md)
+## Why Ultimate exists
 
-## What is included
+The DSH ecosystem is growing quickly. Comparing dozens of repositories, licenses,
+versions, permissions, and overlapping features is real work. Ultimate makes that
+decision once in a public manifest:
 
-- **Large coding execution:** Agent Team GUI for model/tool routing, TaskSwarm for dependency waves and worktree isolation, Task Planner for experience-aware planning, Proof for read-only acceptance, and Plannotator for plan feedback.
-- **Workflow and reliability:** Workflow orchestration, scheduled automation, Sentinel conditions, model failover, backups, Keychain credentials, and MCP guardrails.
-- **Productivity and UI:** bookmarks, file mentions, auto-continue, global rules, attention status, design skills, writing tools, and the Spotlight surface.
-- **Optional integrations:** notifications, IM bridges, voice/phone tools, and authorized security-research skills. These are opt-in because they may require credentials, permissions, or domain-specific review; components without a complete public notice stay excluded.
+- one strong default per overlapping role instead of several plugins fighting to do the same job;
+- exact 40-character upstream commit pins instead of moving branches;
+- only components with recorded MIT, Apache-2.0, or BSD-3-Clause licensing;
+- platform filtering, dependency preflight, and a second installed-tree audit;
+- optional separation for integrations that need accounts, credentials, permissions, or authorization.
 
-The default set intentionally chooses one strong implementation per overlapping
-role. For example, TaskSwarm covers dependency waves and isolated worktrees;
-Captain is listed as an alternative rather than installed alongside it.
+“Nearly every practical category” does not mean every plugin ever published. It
+means curated coverage across the capability categories that can currently be
+reproduced and publicly audited. Ultimate is community-maintained, not an official
+DeepSeek AI release, and upstream authors keep ownership of their projects.
 
-## Quick start
+## What has already been chosen
 
-Requirements: macOS or Linux, Node.js 22+, Git, and a separately installed DSH
-runtime. From this repository:
+- **Large coding work:** visual Agent teams, dependency-wave execution, Git worktree isolation, experience-aware planning, read-only verification, and plan review.
+- **Workflow and reliability:** reusable workflows, scheduled sessions, condition-driven wakeups, backups, persistent memory, global rules, and macOS Keychain support.
+- **Everyday productivity:** bookmarks, auto-continue, design skills, and a focused Spotlight surface.
+- **Optional connections:** notifications, IM bridges, phone callbacks, and authorized security-research skills stay opt-in because they require extra trust or setup.
+
+TaskSwarm already covers dependency waves and isolated worktrees, so Captain is
+documented as an alternative rather than installed beside it. The same rule is
+used throughout the profile; see [Excluded components](EXCLUDED_COMPONENTS.md).
+
+## Five-minute start
+
+Requirements: Windows 10/11 x64, macOS, or Linux; Node.js 22 or newer; and
+network access to the public repositories in `profile/manifest.json`. Git is
+recommended but is not required if you download the source ZIP.
+
+### macOS or Linux
+
+From the extracted repository folder:
 
 ```bash
+node --version
 node scripts/audit-manifest.mjs
 node scripts/install-ultimate.mjs --profile-dir "$HOME/.dsh/profiles/ultimate"
+npx --yes @deepseek-ai/dsh@0.1.0-rc.7 --profile ultimate
 ```
 
-The installer writes a clean profile manifest and fetches only the selected
-upstream repositories. Configure providers and API keys in the local runtime;
-never commit them to this repository.
+### Windows PowerShell
 
-Before writing the target profile, the installer resolves a lockfile in a
-temporary directory and rejects plugins that place host
-`@deepseek-ai/dsh-*` packages in ordinary `dependencies`. It audits the
-installed physical package tree again afterward. Host core packages belong in
-`peerDependencies`; the installer never deletes credentials or sessions.
+From the extracted repository folder:
+
+```powershell
+node --version
+& .\windows\install-ultimate.ps1
+npx --yes @deepseek-ai/dsh@0.1.0-rc.7 --profile ultimate
+```
+
+The first launch may download the official DSH runtime. Open **Settings →
+Models**, add your own provider and API key, choose a workspace, and send a small
+test task. Ultimate never contains or copies an API key.
+
+For every click, expected message, and common error, use the
+[beginner tutorial](TUTORIAL.md). It also explains how an existing local macOS
+DeepSeek Harness app can use the curated `web` profile.
+
+## What the installer changes
+
+The installer creates a user-owned profile under
+`$HOME/.dsh/profiles/ultimate` or `%USERPROFILE%\.dsh\profiles\ultimate`. It
+places the official `@deepseek-ai/dsh-base` and `@deepseek-ai/dsh-web-app`
+layers first, then the selected third-party bundle layers. It writes
+`package.json`, `package-lock.json`, `COMPONENTS.json`, and a non-destructive
+`cordis.patch.yml`, then downloads pinned upstream archives with npm.
+
+Before touching the target profile, it resolves a temporary lockfile and rejects
+plugins that install host `@deepseek-ai/dsh-*` packages as ordinary dependencies.
+After installation it scans the physical package tree again. Existing credentials,
+sessions, and user overrides are not deleted.
 
 ## Windows package
 
-Windows 10/11 x64 is supported by the `windows/` profile installer. It is a
-Windows packaging layer for the same reproducible Node profile, not a claim
-that macOS-only control plugins work on Windows. Run
-`windows/bootstrap-build-environment.ps1` to prepare Git, Node.js LTS, NSIS,
-and an optional official DSH runtime. Then run
-`windows/install-ultimate.ps1` to install the profile, or use the ZIP/NSIS
-artifacts produced by `windows/build-release.ps1`. The repository's
-`windows-v*` workflow builds those artifacts on a real `windows-2025` runner.
-The Windows installer also excludes components marked `platform: "macos"` and
-refuses an explicit request for an incompatible component.
+The `windows/` directory provides a profile installer plus reproducible portable
+ZIP and NSIS packaging. It is not a separate DSH desktop application. The Windows
+filter excludes macOS-only components such as `keyringseam`. See the
+[Windows guide](windows/README.md).
 
-Read the [Windows guide](windows/README.md) or the
-[中文 Windows 指南](windows/README.zh-CN.md) for the complete setup.
+## Privacy, licensing, and limits
 
-## Licensing and redistribution
+This repository contains the manifest, installer, audit rules, and documentation.
+It does not redistribute third-party source, `node_modules`, API keys, phone
+numbers, email addresses, browser sessions, or private configuration. Provider
+credentials belong in the local DSH secret store or environment, never in this
+repository, screenshots, or public issues.
 
-The installer and manifests in this repository are MIT-licensed. Components
-listed in `profile/manifest.json` remain under their upstream MIT, Apache-2.0,
-or BSD-3-Clause licenses. Keep their notices when distributing an installed
-profile. Components with unclear metadata, private package flags, local-only
-paths, or overlapping functionality are documented in
-`EXCLUDED_COMPONENTS.md` and are not silently bundled.
+The repository code is MIT-licensed. Fetched components keep their upstream MIT,
+Apache-2.0, or BSD-3-Clause licenses and notices. DSH is still a developer preview,
+so compatibility-breaking upstream changes remain possible. Read [NOTICE](NOTICE),
+[UPSTREAM.md](UPSTREAM.md), and [LICENSE](LICENSE) before redistribution.
 
-See [NOTICE](NOTICE), [UPSTREAM.md](UPSTREAM.md), and
-[LICENSE](LICENSE) before making a derivative distribution.
+## Verify or develop
+
+```bash
+npm ci --ignore-scripts
+npm test
+npm run audit
+git diff --check
+```
+
+Contributions should keep the manifest reproducible, avoid duplicate roles, preserve
+upstream notices, and update all language selectors when documentation changes.
