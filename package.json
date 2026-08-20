@@ -28,6 +28,7 @@
     "README*.md",
     "TUTORIAL*.md",
     "UPSTREAM.md",
+    "assets/screenshots",
     "profile",
     "scripts",
     "tests",

@@ -293,6 +293,57 @@ const navigationByLocale = {
   uk: ['Мови', 'Мови посібника', 'Запуск локального profile'],
 };
 
+const screenshotTextByLocale = {
+  en: { heading: 'Visual guide', intro: 'These screenshots come from clean profiles with no sessions, credentials, or private workspace data. The macOS images show the native shell; the Windows images show the shared DSH Web UI rendered on a real Windows runner.', mac: 'macOS native app', windows: 'Windows DSH Web UI', preview: 'Developer preview notice', api: 'Blank API key onboarding', workspace: 'Empty workspace home', models: 'Model settings with a blank key field', plugins: 'Plugin inventory with 133 entries' },
+  'zh-CN': { heading: '图文速览', intro: '以下截图来自没有会话、凭据或私有工作区数据的干净 profile。macOS 图片展示原生外壳；Windows 图片展示真实 Windows runner 渲染的共享 DSH Web UI。', mac: 'macOS 原生 App', windows: 'Windows DSH Web UI', preview: '开发者预览提示', api: '空白 API Key 引导', workspace: '空工作区首页', models: 'API 密钥为空的模型设置', plugins: '包含 133 项的插件清单' },
+  'zh-TW': { heading: '圖文速覽', intro: '以下截圖來自沒有工作階段、憑證或私人工作區資料的乾淨 profile。macOS 圖片展示原生外殼；Windows 圖片展示真實 Windows runner 渲染的共用 DSH Web UI。', mac: 'macOS 原生 App', windows: 'Windows DSH Web UI', preview: '開發者預覽提示', api: '空白 API Key 引導', workspace: '空工作區首頁', models: 'API Key 為空的模型設定', plugins: '包含 133 項的外掛清單' },
+  es: { heading: 'Guía visual', intro: 'Estas capturas proceden de perfiles limpios sin sesiones, credenciales ni datos privados. Las imágenes de macOS muestran la carcasa nativa; las de Windows muestran la misma DSH Web UI en un runner Windows real.', mac: 'App nativa de macOS', windows: 'DSH Web UI de Windows', preview: 'Aviso de vista previa', api: 'Configuración inicial con API Key vacía', workspace: 'Inicio sin workspace', models: 'Modelos con el campo de clave vacío', plugins: 'Inventario de plugins con 133 entradas' },
+  fr: { heading: 'Guide visuel', intro: 'Ces captures proviennent de profiles propres, sans sessions, identifiants ni données privées. Les images macOS montrent l’enveloppe native ; celles de Windows montrent la même DSH Web UI sur un runner Windows réel.', mac: 'App macOS native', windows: 'DSH Web UI Windows', preview: 'Avis de préversion', api: 'Onboarding avec clé API vide', workspace: 'Accueil sans workspace', models: 'Modèles avec champ de clé vide', plugins: 'Inventaire de 133 plugins' },
+  de: { heading: 'Bilder zur Orientierung', intro: 'Diese Aufnahmen stammen aus sauberen Profilen ohne Sitzungen, Zugangsdaten oder private Workspace-Daten. Die macOS-Bilder zeigen die native Hülle; die Windows-Bilder zeigen dieselbe DSH Web UI auf einem echten Windows-Runner.', mac: 'Native macOS-App', windows: 'DSH Web UI unter Windows', preview: 'Hinweis zur Entwicklervorschau', api: 'Einrichtung mit leerem API-Key', workspace: 'Startseite ohne Workspace', models: 'Modelle mit leerem Schlüsselfeld', plugins: 'Plugin-Inventar mit 133 Einträgen' },
+  'pt-BR': { heading: 'Guia visual', intro: 'Estas capturas vêm de profiles limpos, sem sessões, credenciais ou dados privados. As imagens do macOS mostram o shell nativo; as do Windows mostram a mesma DSH Web UI em um runner Windows real.', mac: 'App nativo do macOS', windows: 'DSH Web UI no Windows', preview: 'Aviso de prévia para desenvolvedores', api: 'Onboarding com API Key vazia', workspace: 'Início sem workspace', models: 'Modelos com campo de chave vazio', plugins: 'Inventário com 133 plugins' },
+  ru: { heading: 'Наглядный обзор', intro: 'Эти снимки сделаны из чистых profile без сессий, учётных данных и личных данных workspace. На macOS показана нативная оболочка, а на Windows — та же DSH Web UI на настоящем Windows runner.', mac: 'Нативное приложение macOS', windows: 'DSH Web UI в Windows', preview: 'Уведомление о предварительной версии', api: 'Настройка с пустым API-ключом', workspace: 'Главная страница без workspace', models: 'Модели с пустым полем ключа', plugins: 'Инвентарь из 133 плагинов' },
+  ja: { heading: '画面ガイド', intro: 'これらはセッション、認証情報、個人の workspace データを含まないクリーンな profile から取得しました。macOS はネイティブシェル、Windows は実際の Windows runner 上の共通 DSH Web UI です。', mac: 'macOS ネイティブ App', windows: 'Windows DSH Web UI', preview: '開発者プレビューの通知', api: '空の API キー設定', workspace: 'workspace 未選択のホーム', models: 'キー欄が空のモデル設定', plugins: '133 件のプラグイン一覧' },
+  ko: { heading: '화면 안내', intro: '세션, 자격 증명, 개인 workspace 데이터가 없는 깨끗한 profile에서 캡처했습니다. macOS 이미지는 네이티브 셸을, Windows 이미지는 실제 Windows runner에서 렌더링한 공통 DSH Web UI를 보여 줍니다.', mac: 'macOS 네이티브 앱', windows: 'Windows DSH Web UI', preview: '개발자 프리뷰 알림', api: '빈 API 키 온보딩', workspace: 'workspace가 비어 있는 홈', models: '키 입력란이 비어 있는 모델 설정', plugins: '133개 플러그인 목록' },
+  ar: { heading: 'دليل مرئي', intro: 'هذه اللقطات من profile نظيف بلا جلسات أو بيانات اعتماد أو بيانات workspace خاصة. صور macOS تعرض الغلاف الأصلي، وصور Windows تعرض واجهة DSH Web UI نفسها على runner حقيقي.', mac: 'تطبيق macOS الأصلي', windows: 'واجهة DSH Web UI في Windows', preview: 'تنبيه المعاينة للمطورين', api: 'إعداد مفتاح API فارغ', workspace: 'الصفحة الرئيسية بلا workspace', models: 'إعداد النماذج بحقل مفتاح فارغ', plugins: 'جرد 133 إضافة' },
+  hi: { heading: 'दृश्य मार्गदर्शिका', intro: 'ये स्क्रीनशॉट ऐसे साफ profile से हैं जिनमें session, credentials या निजी workspace data नहीं है। macOS चित्र native shell दिखाते हैं; Windows चित्र असली Windows runner पर साझा DSH Web UI दिखाते हैं।', mac: 'macOS native app', windows: 'Windows DSH Web UI', preview: 'Developer preview सूचना', api: 'खाली API key onboarding', workspace: 'खाली workspace home', models: 'खाली key field वाला model settings', plugins: '133 plugins का inventory' },
+  it: { heading: 'Guida visiva', intro: 'Queste schermate provengono da profile puliti senza sessioni, credenziali o dati privati del workspace. Le immagini macOS mostrano lo shell nativo; quelle Windows mostrano la DSH Web UI condivisa su un runner Windows reale.', mac: 'App nativa macOS', windows: 'DSH Web UI Windows', preview: 'Avviso di anteprima per sviluppatori', api: 'Onboarding con API Key vuota', workspace: 'Home senza workspace', models: 'Impostazioni modello con chiave vuota', plugins: 'Inventario di 133 plugin' },
+  id: { heading: 'Panduan visual', intro: 'Tangkapan ini berasal dari profile bersih tanpa sesi, kredensial, atau data workspace pribadi. Gambar macOS menampilkan shell native; gambar Windows menampilkan DSH Web UI yang sama pada runner Windows nyata.', mac: 'Aplikasi native macOS', windows: 'DSH Web UI Windows', preview: 'Pemberitahuan pratinjau pengembang', api: 'Onboarding API key kosong', workspace: 'Beranda tanpa workspace', models: 'Pengaturan model dengan kolom kunci kosong', plugins: 'Inventaris 133 plugin' },
+  tr: { heading: 'Görsel rehber', intro: 'Bu ekran görüntüleri oturum, kimlik bilgisi veya özel workspace verisi olmayan temiz profile kaynaklanır. macOS görselleri yerel kabuğu, Windows görselleri gerçek bir Windows runner üzerindeki ortak DSH Web UI’yi gösterir.', mac: 'Yerel macOS uygulaması', windows: 'Windows DSH Web UI', preview: 'Geliştirici önizleme bildirimi', api: 'Boş API anahtarı kurulumu', workspace: 'Boş workspace ana sayfası', models: 'Anahtar alanı boş model ayarları', plugins: '133 eklentilik envanter' },
+  vi: { heading: 'Hướng dẫn trực quan', intro: 'Ảnh chụp lấy từ profile sạch, không có session, thông tin xác thực hay dữ liệu workspace riêng. Ảnh macOS cho thấy shell gốc; ảnh Windows cho thấy cùng DSH Web UI trên runner Windows thật.', mac: 'Ứng dụng macOS gốc', windows: 'DSH Web UI trên Windows', preview: 'Thông báo bản xem trước', api: 'Thiết lập API key trống', workspace: 'Trang chủ chưa có workspace', models: 'Cài đặt model với ô khóa trống', plugins: 'Danh mục 133 plugin' },
+  th: { heading: 'คู่มือภาพ', intro: 'ภาพเหล่านี้มาจาก profile สะอาดที่ไม่มี session ข้อมูลรับรอง หรือข้อมูล workspace ส่วนตัว ภาพ macOS แสดง shell แบบเนทีฟ ส่วนภาพ Windows แสดง DSH Web UI เดียวกันบน runner Windows จริง', mac: 'แอป macOS แบบเนทีฟ', windows: 'DSH Web UI บน Windows', preview: 'ประกาศ developer preview', api: 'เริ่มต้นด้วย API key ว่าง', workspace: 'หน้าแรกที่ยังไม่มี workspace', models: 'ตั้งค่าโมเดลโดยเว้นช่องคีย์ว่าง', plugins: 'รายการปลั๊กอิน 133 รายการ' },
+  pl: { heading: 'Przewodnik wizualny', intro: 'Zrzuty pochodzą z czystych profili bez sesji, danych logowania i prywatnych danych workspace. Obrazy macOS pokazują natywną powłokę, a obrazy Windows tę samą DSH Web UI na prawdziwym runnerze Windows.', mac: 'Natywna aplikacja macOS', windows: 'DSH Web UI w Windows', preview: 'Informacja o wersji deweloperskiej', api: 'Konfiguracja z pustym kluczem API', workspace: 'Strona bez workspace', models: 'Ustawienia modeli z pustym polem klucza', plugins: 'Inwentarz 133 wtyczek' },
+  nl: { heading: 'Visuele gids', intro: 'Deze screenshots komen uit schone profielen zonder sessies, inloggegevens of privégegevens. macOS toont de native shell; Windows toont dezelfde DSH Web UI op een echte Windows-runner.', mac: 'Native macOS-app', windows: 'DSH Web UI voor Windows', preview: 'Melding voor ontwikkelaarspreview', api: 'Onboarding met lege API-sleutel', workspace: 'Start zonder workspace', models: 'Modelinstellingen met leeg sleutelveld', plugins: 'Plugininventaris met 133 items' },
+  uk: { heading: 'Візуальний гід', intro: 'Ці знімки зроблено з чистих profile без сесій, облікових даних і приватних даних workspace. Зображення macOS показують нативну оболонку, а Windows — той самий DSH Web UI на справжньому Windows runner.', mac: 'Нативна програма macOS', windows: 'DSH Web UI у Windows', preview: 'Повідомлення про попередню версію', api: 'Початкове налаштування з порожнім API-ключем', workspace: 'Домашня сторінка без workspace', models: 'Налаштування моделей із порожнім полем ключа', plugins: 'Інвентар 133 плагінів' },
+};
+
+function imageFigure(file, alt, caption) {
+  return `![${alt}](${file})\n\n*${caption}*`;
+}
+
+function screenshotGallery(l, compact = false) {
+  const text = screenshotTextByLocale[l.code] ?? screenshotTextByLocale.en;
+  const root = 'assets/screenshots/';
+  const platformPair = [
+    imageFigure(`${root}macos-03-empty-workspace.jpg`, `${text.mac}: ${text.workspace}`, `${text.mac} — ${text.workspace}`),
+    imageFigure(`${root}windows-03-empty-workspace.png`, `${text.windows}: ${text.workspace}`, `${text.windows} — ${text.workspace}`),
+  ];
+  if (compact) return `## ${text.heading}\n\n${text.intro}\n\n${platformPair.join('\n\n')}`;
+  return [
+    `## ${text.heading}`,
+    text.intro,
+    imageFigure(`${root}macos-01-developer-preview.jpg`, `${text.mac}: ${text.preview}`, `${text.mac} — ${text.preview}`),
+    imageFigure(`${root}macos-02-api-key-onboarding.jpg`, `${text.mac}: ${text.api}`, `${text.mac} — ${text.api}`),
+    imageFigure(`${root}macos-03-empty-workspace.jpg`, `${text.mac}: ${text.workspace}`, `${text.mac} — ${text.workspace}`),
+    imageFigure(`${root}macos-04-model-settings.jpg`, `${text.mac}: ${text.models}`, `${text.mac} — ${text.models}`),
+    imageFigure(`${root}macos-05-plugin-inventory.jpg`, `${text.mac}: ${text.plugins}`, `${text.mac} — ${text.plugins}`),
+    imageFigure(`${root}windows-01-developer-preview.png`, `${text.windows}: ${text.preview}`, `${text.windows} — ${text.preview}`),
+    imageFigure(`${root}windows-02-api-key-onboarding.png`, `${text.windows}: ${text.api}`, `${text.windows} — ${text.api}`),
+    imageFigure(`${root}windows-03-empty-workspace.png`, `${text.windows}: ${text.workspace}`, `${text.windows} — ${text.workspace}`),
+    imageFigure(`${root}windows-04-model-settings.png`, `${text.windows}: ${text.models}`, `${text.windows} — ${text.models}`),
+    imageFigure(`${root}windows-05-plugin-inventory.png`, `${text.windows}: ${text.plugins}`, `${text.windows} — ${text.plugins}`),
+  ].join('\n\n');
+}
+
 function compactLocale({ code, name, hero, quote, why, included, requirements, installer, boundary, title, intro, headings, sections }) {
   const common = commonByLocale[code];
   return {
@@ -583,6 +634,8 @@ function makeReadme(l) {
 
 [${l.tutorialTitle}](TUTORIAL.${l.code}.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+${screenshotGallery(l, true)}
+
 ## ${l.labels[0]}
 
 ${l.why}
@@ -651,6 +704,8 @@ ${l.tutorialIntro}
 **${navigation[1]}:** ${selector('TUTORIAL', l.code)}
 
 [${common.back}](README.${l.code}.md)
+
+${screenshotGallery(l)}
 
 ${sections.join('\n\n')}
 

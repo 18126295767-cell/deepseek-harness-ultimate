@@ -96,3 +96,28 @@ test('all relative Markdown links resolve to repository files', () => {
     }
   }
 });
+
+test('all languages include the privacy-safe macOS and Windows screenshot gallery', () => {
+  const images = [
+    'assets/screenshots/macos-01-developer-preview.jpg',
+    'assets/screenshots/macos-02-api-key-onboarding.jpg',
+    'assets/screenshots/macos-03-empty-workspace.jpg',
+    'assets/screenshots/macos-04-model-settings.jpg',
+    'assets/screenshots/macos-05-plugin-inventory.jpg',
+    'assets/screenshots/windows-01-developer-preview.png',
+    'assets/screenshots/windows-02-api-key-onboarding.png',
+    'assets/screenshots/windows-03-empty-workspace.png',
+    'assets/screenshots/windows-04-model-settings.png',
+    'assets/screenshots/windows-05-plugin-inventory.png',
+  ];
+  for (const image of images) assert.equal(fs.existsSync(path.join(root, image)), true, `missing screenshot ${image}`);
+  for (const locale of locales) {
+    for (const file of [fileFor('README', locale), fileFor('TUTORIAL', locale)]) {
+      const source = read(file);
+      assert.match(source, /assets\/screenshots\/macos-03-empty-workspace\.jpg/);
+      assert.match(source, /assets\/screenshots\/windows-03-empty-workspace\.png/);
+    }
+    assert.match(read(fileFor('TUTORIAL', locale)), /assets\/screenshots\/macos-05-plugin-inventory\.jpg/);
+    assert.match(read(fileFor('TUTORIAL', locale)), /assets\/screenshots\/windows-05-plugin-inventory\.png/);
+  }
+});
