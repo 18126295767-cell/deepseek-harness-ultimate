@@ -30,3 +30,5 @@ Set-Location windows
 ```
 
 windows-2025 CI は ZIP、NSIS、12 言語ガイド、SHA-256 を検証します。macOS 専用プラグインの Windows 動作は保証しません。
+
+インストーラーは対象を変更する前に一時 lockfile を監査し、インストール後に実際のパッケージツリーを再検査します。ホスト DSH コアへの通常依存は拒否され、Windows の platform フィルターは macOS 専用コンポーネントを除外します。

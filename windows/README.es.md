@@ -30,3 +30,5 @@ Set-Location windows
 ```
 
 La CI windows-2025 verifica ZIP, NSIS, 12 guías de idioma y SHA-256. No se garantiza que los plugins exclusivos de macOS funcionen en Windows.
+
+El instalador audita un lockfile temporal antes de cambiar el destino y vuelve a inspeccionar el árbol instalado. Rechaza dependencias normales de paquetes centrales del host DSH y el filtro de Windows excluye componentes exclusivos de macOS.

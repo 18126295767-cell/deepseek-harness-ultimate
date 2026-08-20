@@ -30,3 +30,5 @@ Set-Location windows
 ```
 
 Die Windows-2025-CI prüft ZIP, NSIS, 12 Sprachdateien und SHA-256. macOS-exklusive Plugins werden unter Windows nicht versprochen.
+
+Der Installer prüft vor Änderungen eine temporäre Lockdatei und danach den installierten Paketbaum. Normale Abhängigkeiten auf DSH-Kernpakete des Hosts werden abgelehnt; der Windows-Plattformfilter schließt macOS-Komponenten aus.

@@ -30,3 +30,5 @@ Set-Location windows
 ```
 
 windows-2025 CI ZIP, NSIS, 12 भाषा guides और SHA-256 की जाँच करती है। macOS-only plugins के Windows समर्थन का दावा नहीं किया जाता।
+
+Installer target बदलने से पहले temporary lockfile की audit करता है और install के बाद वास्तविक package tree फिर जाँचता है। Host DSH core packages पर सामान्य dependencies अस्वीकार होती हैं और Windows platform filter macOS-only components हटाता है।

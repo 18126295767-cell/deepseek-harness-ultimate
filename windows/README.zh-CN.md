@@ -50,6 +50,10 @@ Set-Location windows
 安装器使用 `npm install --ignore-scripts --legacy-peer-deps`，并使用清单中的 40 位
 commit 固定值。模型供应商和 API 密钥请配置在本地 DSH runtime 中，绝不要写入本仓库。
 
+改变目标 profile 前，安装器会在临时目录解析锁文件，拒绝捆绑 DSH 宿主核心包的插件，
+安装后再扫描实际包树。Windows 平台过滤会排除 `platform: "macos"` 的组件；检查失败时
+不会为了绕过错误而静默删除文件。
+
 ## 构建 Windows 安装包
 
 在安装 NSIS 的 Windows 环境中执行：
@@ -74,3 +78,6 @@ profile。Windows 包不宣称 macOS 专用控制插件可以在 Windows 上工�
 
 使用 NSIS 卸载器，或删除 `%LOCALAPPDATA%\DeepSeek Harness Ultimate`。这只删除本安装
 包和快捷方式，刻意保留单独管理的 DSH runtime、profile 和凭据。
+
+安装器会先审计临时锁文件，再改变目标目录，并在安装后扫描实际包树。普通依赖中的 DSH
+宿主核心包会被拒绝；Windows 平台过滤会排除 macOS 专用组件。

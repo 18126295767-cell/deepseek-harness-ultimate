@@ -20,7 +20,9 @@ node scripts/install-ultimate.mjs \
 
 安装器使用 `profile/manifest.json` 中的提交固定 GitHub 归档地址，以 `--ignore-scripts` 和
 `--legacy-peer-deps` 运行 npm，
-只写入指定配置目录。它不会读取或传输 API 密钥、电话号码、邮箱、浏览器会话或私有文件。
+只写入指定配置目录。在写入前，它会用临时目录解析锁文件，拒绝普通依赖中的 DSH 宿主
+核心包；安装后还会再次审计实际物理包树。它不会读取或传输 API 密钥、电话号码、邮箱、
+浏览器会话或私有文件。
 
 ## 添加可选集成
 
@@ -51,6 +53,14 @@ node scripts/install-ultimate.mjs \
 请求。请在配置目录执行 `npm ls --depth=0`，并将 `COMPONENTS.json` 与
 `profile/manifest.json` 对照。
 
+如果已知 runtime 目录，可执行更严格的物理副本检查：
+
+```bash
+node scripts/audit-installed-profile.mjs \
+  --profile-dir "$HOME/.dsh/profiles/ultimate" \
+  --runtime-dir /绝对路径/dsh-runtime
+```
+
 ## Windows 环境与安装包
 
 在 Windows 10/11 x64 上准备 PowerShell 5.1/7 和 Node.js 22 或更高版本。准备构建机：
@@ -73,7 +83,8 @@ runtime 时使用 `-SkipRuntime`。安装器改变 `PATH` 后请重新打开 Pow
 默认目标目录是 `%USERPROFILE%\.dsh\profiles\ultimate`。使用 `-DryRun` 可只查看选中的
 commit 固定值而不下载组件；使用 `-IncludeOptional` 才会加入可选组件。该脚本与
 macOS/Linux 共用同一个 Node 安装器，仍会使用 `--ignore-scripts` 和
-`--legacy-peer-deps`。
+`--legacy-peer-deps`。它会显式选择 `windows` 平台，因此不会安装 `keyringseam` 等
+macOS 专用组件。
 
 在 Windows 上生成便携 ZIP、当前用户 NSIS 安装包和 SHA-256 校验文件：
 

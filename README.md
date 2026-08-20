@@ -46,6 +46,12 @@ The installer writes a clean profile manifest and fetches only the selected
 upstream repositories. Configure providers and API keys in the local runtime;
 never commit them to this repository.
 
+Before writing the target profile, the installer resolves a lockfile in a
+temporary directory and rejects plugins that place host
+`@deepseek-ai/dsh-*` packages in ordinary `dependencies`. It audits the
+installed physical package tree again afterward. Host core packages belong in
+`peerDependencies`; the installer never deletes credentials or sessions.
+
 ## Windows package
 
 Windows 10/11 x64 is supported by the `windows/` profile installer. It is a
@@ -56,6 +62,8 @@ and an optional official DSH runtime. Then run
 `windows/install-ultimate.ps1` to install the profile, or use the ZIP/NSIS
 artifacts produced by `windows/build-release.ps1`. The repository's
 `windows-v*` workflow builds those artifacts on a real `windows-2025` runner.
+The Windows installer also excludes components marked `platform: "macos"` and
+refuses an explicit request for an incompatible component.
 
 Read the [Windows guide](windows/README.md) or the
 [中文 Windows 指南](windows/README.zh-CN.md) for the complete setup.

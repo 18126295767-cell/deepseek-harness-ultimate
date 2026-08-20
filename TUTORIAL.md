@@ -20,7 +20,7 @@ node scripts/install-ultimate.mjs \
 ```
 
 The installer uses commit-pinned GitHub archive URLs from `profile/manifest.json`,
-runs npm with `--ignore-scripts` and `--legacy-peer-deps`, and writes only to the profile directory. It does not read
+runs npm with `--ignore-scripts` and `--legacy-peer-deps`, and writes only to the profile directory. Before that write, it resolves a temporary lockfile and rejects ordinary dependencies on host DSH core packages. It audits the installed physical tree again afterward. It does not read
 or transmit API keys, phone numbers, email addresses, browser sessions, or
 private files.
 
@@ -56,6 +56,15 @@ with the same manifest commits should produce the same dependency requests.
 Review `npm ls --depth=0` in the profile directory and compare
 `COMPONENTS.json` with `profile/manifest.json`.
 
+When the runtime location is known, include it for the strongest physical-copy
+check:
+
+```bash
+node scripts/audit-installed-profile.mjs \
+  --profile-dir "$HOME/.dsh/profiles/ultimate" \
+  --runtime-dir /absolute/path/to/dsh-runtime
+```
+
 ## Windows setup and package
 
 On Windows 10/11 x64, install PowerShell 5.1/7 and Node.js 22+. To prepare a
@@ -81,7 +90,8 @@ The default destination is `%USERPROFILE%\.dsh\profiles\ultimate`. Use
 `-DryRun` to inspect the selected commit pins without downloading packages and
 `-IncludeOptional` to opt into optional components. The script delegates to the
 same Node installer as macOS/Linux, including `--ignore-scripts` and
-`--legacy-peer-deps`.
+`--legacy-peer-deps`. It explicitly selects the `windows` platform, so
+macOS-only components such as `keyringseam` are not installed.
 
 Build a portable ZIP, per-user NSIS installer, and SHA-256 manifest on Windows:
 

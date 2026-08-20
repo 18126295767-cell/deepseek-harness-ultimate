@@ -4,6 +4,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { auditInstalledProfile, auditLockfile, formatIntegrityFailures, normalizePlatform, selectComponents } from './profile-integrity.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -12,28 +13,32 @@ const args = process.argv.slice(2);
 let profileDir = path.join(os.homedir(), '.dsh', 'profiles', 'ultimate');
 let includeOptional = false;
 let dryRun = false;
+let runtimeDir = '';
+let targetPlatform = normalizePlatform();
 const requested = new Set();
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--profile-dir') profileDir = path.resolve(args[++i] || '');
   else if (args[i] === '--include-optional') includeOptional = true;
   else if (args[i] === '--dry-run') dryRun = true;
+  else if (args[i] === '--runtime-dir') runtimeDir = path.resolve(args[++i] || '');
+  else if (args[i] === '--platform') targetPlatform = normalizePlatform(args[++i] || '');
   else if (args[i] === '--include') requested.add(args[++i] || '');
   else if (args[i] === '--help' || args[i] === '-h') {
-    console.log('Usage: node scripts/install-ultimate.mjs [--profile-dir PATH] [--include-optional] [--include PACKAGE] [--dry-run]');
+    console.log('Usage: node scripts/install-ultimate.mjs [--profile-dir PATH] [--runtime-dir PATH] [--platform macos|windows|linux] [--include-optional] [--include PACKAGE] [--dry-run]');
     process.exit(0);
   } else throw new Error(`Unknown argument: ${args[i]}`);
 }
+if (!['macos', 'windows', 'linux'].includes(targetPlatform)) throw new Error(`Unsupported platform: ${targetPlatform}`);
 
 const audit = spawnSync(process.execPath, [path.join(root, 'scripts', 'audit-manifest.mjs')], { encoding: 'utf8' });
 if (audit.status !== 0) { process.stderr.write(audit.stderr || audit.stdout); process.exit(audit.status || 1); }
 
-const selected = manifest.components.filter((component) => component.default || (includeOptional && component.optional) || requested.has(component.package));
+const selected = selectComponents(manifest, { includeOptional, requested, platform: targetPlatform });
 if (!selected.length) throw new Error('No components selected');
 if (dryRun) {
-  console.log(JSON.stringify({ profileDir, selected: selected.map((component) => ({ package: component.package, repository: component.repository, commit: component.commit })) }, null, 2));
+  console.log(JSON.stringify({ profileDir, platform: targetPlatform, selected: selected.map((component) => ({ package: component.package, repository: component.repository, commit: component.commit })) }, null, 2));
   process.exit(0);
 }
-fs.mkdirSync(profileDir, { recursive: true });
 const packageJson = {
   name: 'dsh-profile-ultimate',
   version: '1.0.0',
@@ -46,10 +51,38 @@ const packageJson = {
   dsh: { profile: { bundles: selected.map((component) => component.package) } },
   ultimate: { manifest: 'https://github.com/18126295767-cell/deepseek-harness-ultimate/blob/main/profile/manifest.json' }
 };
+const preflightDir = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-ultimate-preflight-'));
+let lockfile;
+try {
+  fs.writeFileSync(path.join(preflightDir, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
+  const preflight = spawnSync('npm', ['install', '--package-lock-only', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: preflightDir, stdio: 'inherit' });
+  if (preflight.status !== 0) throw new Error(`Dependency preflight failed with exit code ${preflight.status ?? 1}`);
+  lockfile = JSON.parse(fs.readFileSync(path.join(preflightDir, 'package-lock.json'), 'utf8'));
+  const violations = auditLockfile(lockfile);
+  if (violations.length) {
+    console.error('Dependency audit failed before profile installation:');
+    for (const line of formatIntegrityFailures(violations)) console.error(`- ${line}`);
+    console.error('DSH host core packages must be declared in peerDependencies, never dependencies.');
+    throw new Error('Dependency preflight rejected the selected profile');
+  }
+} finally {
+  fs.rmSync(preflightDir, { recursive: true, force: true });
+}
+
+fs.mkdirSync(profileDir, { recursive: true });
 fs.writeFileSync(path.join(profileDir, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
 fs.writeFileSync(path.join(profileDir, 'COMPONENTS.json'), `${JSON.stringify(selected, null, 2)}\n`);
+fs.writeFileSync(path.join(profileDir, 'package-lock.json'), `${JSON.stringify(lockfile, null, 2)}\n`);
 
-const install = spawnSync('npm', ['install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund', '--save-exact'], { cwd: profileDir, stdio: 'inherit' });
+const install = spawnSync('npm', ['install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: profileDir, stdio: 'inherit' });
 if (install.status !== 0) process.exit(install.status || 1);
+const installedAudit = auditInstalledProfile(profileDir, { runtimeDir });
+if (!installedAudit.ok) {
+  console.error('Installed profile integrity audit failed:');
+  for (const line of formatIntegrityFailures(installedAudit)) console.error(`- ${line}`);
+  console.error('The profile was not approved for use. No credentials or sessions were changed.');
+  process.exit(2);
+}
 console.log(`Installed ${selected.length} selected components into ${profileDir}`);
+console.log(`Platform filter: ${targetPlatform}`);
 console.log('Credentials and provider settings were not created or copied. Configure them in your local DSH runtime.');

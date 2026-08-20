@@ -30,3 +30,5 @@ Set-Location windows
 ```
 
 windows-2025 CI 會驗證 ZIP、NSIS、12 種語言指南和 SHA-256；不宣稱 macOS 專用外掛可在 Windows 上運作。
+
+安裝器會先稽核暫存鎖定檔，再變更目標目錄，並於安裝後掃描實際套件樹。普通依賴中的 DSH 宿主核心套件會被拒絕；Windows 平台篩選會排除 macOS 專用元件。

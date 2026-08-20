@@ -55,6 +55,12 @@ The installer uses `npm install --ignore-scripts --legacy-peer-deps` and the
 40-character commit pins in the manifest. Configure providers and API keys in
 your local DSH runtime, never in this repository.
 
+Before changing the target profile, it resolves a lockfile in a temporary
+directory and rejects plugins that bundle host DSH core packages. It then
+audits the installed package tree. The Windows platform filter excludes
+`platform: "macos"` components; no files are silently removed to bypass a
+failure.
+
 ## Build Windows packages
 
 On Windows with NSIS installed:
@@ -83,3 +89,7 @@ whose platform and permissions you have reviewed.
 Use the NSIS uninstaller or remove `%LOCALAPPDATA%\DeepSeek Harness Ultimate`.
 This removes the package and shortcuts, but deliberately leaves the separately
 managed DSH runtime, profile, and credentials untouched.
+
+The installer audits a temporary lockfile before changing the target and scans
+the installed tree afterward. Ordinary dependencies on host DSH core packages
+are rejected, and the Windows platform filter excludes macOS-only components.

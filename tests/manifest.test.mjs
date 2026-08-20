@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import os from 'node:os';
+import { auditInstalledProfile, auditLockfile, selectComponents } from '../scripts/profile-integrity.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'profile', 'manifest.json'), 'utf8'));
@@ -43,4 +45,40 @@ test('Windows package is present and documented', () => {
   const guideCount = fs.readdirSync(path.join(root, 'windows'))
     .filter((file) => /^README.*\.md$/.test(file)).length;
   assert.equal(guideCount, 12, 'expected 12 Windows language guides');
+});
+
+test('Windows selection excludes macOS-only components', () => {
+  const selected = selectComponents(manifest, { platform: 'windows' });
+  assert.equal(selected.some(component => component.package === 'keyringseam'), false);
+  assert.throws(
+    () => selectComponents(manifest, { platform: 'windows', requested: new Set(['keyringseam']) }),
+    /supports macos, not windows/,
+  );
+});
+
+test('lockfile audit rejects ordinary host-core dependencies but permits peers', () => {
+  const violations = auditLockfile({
+    packages: {
+      '': {},
+      'node_modules/broken': { name: 'broken', dependencies: { '@deepseek-ai/dsh-tools': '0.1.0-rc.7' } },
+      'node_modules/safe': { name: 'safe', peerDependencies: { '@deepseek-ai/dsh-tools': '>=0.1.0-rc.6 <0.2.0' } },
+    },
+  });
+  assert.deepEqual(violations.map(item => item.owner), ['broken']);
+});
+
+test('installed profile audit rejects a physical host-core copy', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-ultimate-integrity-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const profile = path.join(root, 'profile');
+  const packageDir = path.join(profile, 'node_modules', '@deepseek-ai', 'dsh-tools');
+  fs.mkdirSync(packageDir, { recursive: true });
+  fs.writeFileSync(path.join(packageDir, 'package.json'), JSON.stringify({ name: '@deepseek-ai/dsh-tools', version: '0.1.0-rc.7' }));
+  const pluginDir = path.join(profile, 'node_modules', 'broken-plugin');
+  fs.mkdirSync(pluginDir, { recursive: true });
+  fs.writeFileSync(path.join(pluginDir, 'package.json'), JSON.stringify({ name: 'broken-plugin', version: '1.0.0', dependencies: { '@deepseek-ai/dsh-tools': '0.1.0-rc.7' } }));
+
+  const report = auditInstalledProfile(profile);
+  assert.equal(report.ok, false);
+  assert.equal(report.dependencyViolations[0].owner, 'broken-plugin');
 });

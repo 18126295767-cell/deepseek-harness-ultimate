@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
   [string]$ProfileDir = "$env:USERPROFILE\.dsh\profiles\ultimate",
+  [string]$RuntimeDir = "",
   [switch]$IncludeOptional,
   [string[]]$Include = @(),
   [switch]$DryRun
@@ -42,7 +43,8 @@ if (-not (Test-Path -LiteralPath $manifest -PathType Leaf) -or
 }
 
 $resolvedProfile = [IO.Path]::GetFullPath($ProfileDir)
-$arguments = @($installer, "--profile-dir", $resolvedProfile)
+$arguments = @($installer, "--profile-dir", $resolvedProfile, "--platform", "windows")
+if ($RuntimeDir) { $arguments += @("--runtime-dir", [IO.Path]::GetFullPath($RuntimeDir)) }
 if ($IncludeOptional) { $arguments += "--include-optional" }
 foreach ($package in $Include) {
   if ([string]::IsNullOrWhiteSpace($package)) { continue }

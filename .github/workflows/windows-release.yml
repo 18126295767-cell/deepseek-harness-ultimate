@@ -8,6 +8,8 @@ on:
         required: true
         default: "1.0.0"
   push:
+    branches:
+      - "main"
     tags:
       - "windows-v*"
 
@@ -50,6 +52,17 @@ jobs:
           & .\windows\install-ultimate.ps1 -DryRun
           $guideCount = @(Get-ChildItem .\windows -Filter "README*.md" -File).Count
           if ($guideCount -ne 12) { throw "Expected 12 Windows language guides, found $guideCount." }
+
+      - name: Reproduce and audit Windows profile
+        shell: pwsh
+        run: |
+          $profile = Join-Path $env:RUNNER_TEMP "dsh-ultimate-profile"
+          & .\windows\install-ultimate.ps1 -ProfileDir $profile
+          node .\scripts\audit-installed-profile.mjs --profile-dir $profile
+          $components = Get-Content (Join-Path $profile "COMPONENTS.json") -Raw | ConvertFrom-Json
+          if ($components.package -contains "keyringseam") {
+            throw "Windows profile unexpectedly contains macOS-only keyringseam."
+          }
 
       - name: Build Windows packages
         shell: pwsh

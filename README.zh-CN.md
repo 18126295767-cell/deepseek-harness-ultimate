@@ -44,6 +44,10 @@ node scripts/install-ultimate.mjs --profile-dir "$HOME/.dsh/profiles/ultimate"
 安装器会写入干净的配置清单，只从指定的上游仓库获取所选组件。请在本地运行时配置
 模型供应商和 API 密钥，绝不要把它们提交到本仓库。
 
+写入目标 profile 之前，安装器会先在临时目录解析锁文件，并拒绝把宿主
+`@deepseek-ai/dsh-*` 核心包放入普通 `dependencies` 的插件；安装完成后还会再次扫描
+实际物理包树。宿主核心包必须放在 `peerDependencies`，检查过程不会删除凭据或会话。
+
 ## Windows 安装包
 
 Windows 10/11 x64 通过 `windows/` profile 安装层支持。它是同一套可复现 Node profile
@@ -52,6 +56,7 @@ Windows 10/11 x64 通过 `windows/` profile 安装层支持。它是同一套可
 官方 DSH runtime；再执行 `windows/install-ultimate.ps1` 安装 profile，或使用
 `windows/build-release.ps1` 生成的 ZIP/NSIS 安装包。仓库的 `windows-v*` 工作流会在真实
 `windows-2025` runner 上构建这些产物。
+Windows 安装器还会自动排除标为 `platform: "macos"` 的组件，并拒绝显式选择不兼容组件。
 
 完整步骤见 [中文 Windows 指南](windows/README.zh-CN.md)，英文说明见
 [Windows guide](windows/README.md)。

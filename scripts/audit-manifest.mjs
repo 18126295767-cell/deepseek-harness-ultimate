@@ -24,6 +24,7 @@ for (const component of manifest.components) {
   if (!/^https:\/\/github\.com\/[^/]+\/[^/]+(?:\.git)?$/.test(component.repository)) errors.push(`${component.package}: repository must be a direct HTTPS GitHub URL`);
   if (!/^[0-9a-f]{40}$/.test(component.commit)) errors.push(`${component.package}: commit must be a 40-character lowercase SHA`);
   if (component.default && component.optional) errors.push(`${component.package}: cannot be both default and optional`);
+  if (component.platform && !['macos', 'windows', 'linux'].includes(component.platform)) errors.push(`${component.package}: unsupported platform ${component.platform}`);
 }
 
 if (errors.length) {
