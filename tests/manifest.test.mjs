@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import os from 'node:os';
 import { auditInstalledProfile, auditLockfile, selectComponents } from '../scripts/profile-integrity.mjs';
-import { npmCommand } from '../scripts/platform-command.mjs';
+import { npmInvocation } from '../scripts/platform-command.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'profile', 'manifest.json'), 'utf8'));
@@ -57,10 +57,17 @@ test('Windows selection excludes macOS-only components', () => {
   );
 });
 
-test('npm subprocess uses the Windows command shim', () => {
-  assert.equal(npmCommand('win32'), 'npm.cmd');
-  assert.equal(npmCommand('darwin'), 'npm');
-  assert.equal(npmCommand('linux'), 'npm');
+test('npm subprocess uses the Windows command interpreter', () => {
+  assert.deepEqual(npmInvocation('win32', { ComSpec: 'C:\\Windows\\System32\\cmd.exe' }), {
+    command: 'C:\\Windows\\System32\\cmd.exe',
+    argsPrefix: ['/d', '/s', '/c', 'npm'],
+  });
+  assert.deepEqual(npmInvocation('win32', {}), {
+    command: 'cmd.exe',
+    argsPrefix: ['/d', '/s', '/c', 'npm'],
+  });
+  assert.deepEqual(npmInvocation('darwin'), { command: 'npm', argsPrefix: [] });
+  assert.deepEqual(npmInvocation('linux'), { command: 'npm', argsPrefix: [] });
 });
 
 test('lockfile audit rejects ordinary host-core dependencies but permits peers', () => {

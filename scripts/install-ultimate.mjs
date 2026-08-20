@@ -5,7 +5,7 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { auditInstalledProfile, auditLockfile, formatIntegrityFailures, normalizePlatform, selectComponents } from './profile-integrity.mjs';
-import { npmCommand } from './platform-command.mjs';
+import { npmInvocation } from './platform-command.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -17,7 +17,7 @@ let dryRun = false;
 let runtimeDir = '';
 let targetPlatform = normalizePlatform();
 const requested = new Set();
-const npm = npmCommand();
+const npm = npmInvocation();
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--profile-dir') profileDir = path.resolve(args[++i] || '');
   else if (args[i] === '--include-optional') includeOptional = true;
@@ -57,8 +57,11 @@ const preflightDir = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-ultimate-preflig
 let lockfile;
 try {
   fs.writeFileSync(path.join(preflightDir, 'package.json'), `${JSON.stringify(packageJson, null, 2)}\n`);
-  const preflight = spawnSync(npm, ['install', '--package-lock-only', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: preflightDir, stdio: 'inherit' });
-  if (preflight.status !== 0) throw new Error(`Dependency preflight failed with exit code ${preflight.status ?? 1}`);
+  const preflight = spawnSync(npm.command, [...npm.argsPrefix, 'install', '--package-lock-only', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: preflightDir, stdio: 'inherit' });
+  if (preflight.status !== 0) {
+    const detail = preflight.error ? `: ${preflight.error.message}` : '';
+    throw new Error(`Dependency preflight failed with exit code ${preflight.status ?? 1}${detail}`);
+  }
   lockfile = JSON.parse(fs.readFileSync(path.join(preflightDir, 'package-lock.json'), 'utf8'));
   const violations = auditLockfile(lockfile);
   if (violations.length) {
@@ -76,8 +79,11 @@ fs.writeFileSync(path.join(profileDir, 'package.json'), `${JSON.stringify(packag
 fs.writeFileSync(path.join(profileDir, 'COMPONENTS.json'), `${JSON.stringify(selected, null, 2)}\n`);
 fs.writeFileSync(path.join(profileDir, 'package-lock.json'), `${JSON.stringify(lockfile, null, 2)}\n`);
 
-const install = spawnSync(npm, ['install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: profileDir, stdio: 'inherit' });
-if (install.status !== 0) process.exit(install.status || 1);
+const install = spawnSync(npm.command, [...npm.argsPrefix, 'install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], { cwd: profileDir, stdio: 'inherit' });
+if (install.status !== 0) {
+  if (install.error) console.error(`Profile dependency installation could not start: ${install.error.message}`);
+  process.exit(install.status || 1);
+}
 const installedAudit = auditInstalledProfile(profileDir, { runtimeDir });
 if (!installedAudit.ok) {
   console.error('Installed profile integrity audit failed:');
