@@ -5,7 +5,7 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { auditInstalledProfile, auditLockfile, formatIntegrityFailures, normalizePlatform, selectComponents } from './profile-integrity.mjs';
-import { npmInvocation } from './platform-command.mjs';
+import { npmInvocation, npxInvocation } from './platform-command.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -18,6 +18,7 @@ let runtimeDir = '';
 let targetPlatform = normalizePlatform();
 const requested = new Set();
 const npm = npmInvocation();
+const npx = npxInvocation();
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--profile-dir') profileDir = path.resolve(args[++i] || '');
   else if (args[i] === '--include-optional') includeOptional = true;
@@ -31,10 +32,6 @@ for (let i = 0; i < args.length; i++) {
   } else throw new Error(`Unknown argument: ${args[i]}`);
 }
 if (!['macos', 'windows', 'linux'].includes(targetPlatform)) throw new Error(`Unsupported platform: ${targetPlatform}`);
-
-function executable(name) {
-  return process.platform === 'win32' ? `${name}.cmd` : name;
-}
 
 function run(command, commandArgs, cwd, label) {
   const result = spawnSync(command, commandArgs, { cwd, stdio: 'inherit' });
@@ -88,8 +85,8 @@ async function buildSourcePackage(component, outputDirectory) {
     if (recipe.packageManager.startsWith('pnpm@')) {
       const version = recipe.packageManager.slice('pnpm@'.length);
       const pnpm = ['--yes', `pnpm@${version}`];
-      run(executable('npx'), [...pnpm, 'install', '--frozen-lockfile', '--ignore-scripts'], source, `${component.package} dependency install`);
-      run(executable('npx'), [...pnpm, 'run', 'build'], source, `${component.package} build`);
+      run(npx.command, [...npx.argsPrefix, ...pnpm, 'install', '--frozen-lockfile', '--ignore-scripts'], source, `${component.package} dependency install`);
+      run(npx.command, [...npx.argsPrefix, ...pnpm, 'run', 'build'], source, `${component.package} build`);
       run(npm.command, [...npm.argsPrefix, 'pack', '--pack-destination', outputDirectory, '--ignore-scripts'], source, `${component.package} pack`);
     } else if (recipe.packageManager === 'npm') {
       run(npm.command, [...npm.argsPrefix, 'install', '--ignore-scripts', '--legacy-peer-deps', '--no-audit', '--no-fund'], source, `${component.package} dependency install`);

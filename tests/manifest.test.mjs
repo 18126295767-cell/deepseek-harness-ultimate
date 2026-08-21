@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import os from 'node:os';
 import { auditInstalledProfile, auditLockfile, selectComponents } from '../scripts/profile-integrity.mjs';
-import { npmInvocation } from '../scripts/platform-command.mjs';
+import { npmInvocation, npxInvocation } from '../scripts/platform-command.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'profile', 'manifest.json'), 'utf8'));
@@ -96,6 +96,11 @@ test('npm subprocess uses the Windows command interpreter', () => {
   });
   assert.deepEqual(npmInvocation('darwin'), { command: 'npm', argsPrefix: [] });
   assert.deepEqual(npmInvocation('linux'), { command: 'npm', argsPrefix: [] });
+  assert.deepEqual(npxInvocation('win32', { ComSpec: 'C:\\Windows\\System32\\cmd.exe' }), {
+    command: 'C:\\Windows\\System32\\cmd.exe',
+    argsPrefix: ['/d', '/s', '/c', 'npx'],
+  });
+  assert.deepEqual(npxInvocation('darwin'), { command: 'npx', argsPrefix: [] });
 });
 
 test('Windows fallback discovery preserves complete executable paths', () => {
