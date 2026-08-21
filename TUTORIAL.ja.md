@@ -6,6 +6,50 @@
 
 [紹介へ戻る](README.ja.md)
 
+## 画面ガイド
+
+これらはセッション、認証情報、個人の workspace データを含まないクリーンな profile から取得しました。macOS はネイティブシェル、Windows は実際の Windows runner 上の共通 DSH Web UI です。
+
+![macOS ネイティブ App: 開発者プレビューの通知](assets/screenshots/macos-01-developer-preview.jpg)
+
+*macOS ネイティブ App — 開発者プレビューの通知*
+
+![macOS ネイティブ App: 空の API キー設定](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*macOS ネイティブ App — 空の API キー設定*
+
+![macOS ネイティブ App: workspace 未選択のホーム](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS ネイティブ App — workspace 未選択のホーム*
+
+![macOS ネイティブ App: キー欄が空のモデル設定](assets/screenshots/macos-04-model-settings.jpg)
+
+*macOS ネイティブ App — キー欄が空のモデル設定*
+
+![macOS ネイティブ App: 133 件のプラグイン一覧](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*macOS ネイティブ App — 133 件のプラグイン一覧*
+
+![Windows DSH Web UI: 開発者プレビューの通知](assets/screenshots/windows-01-developer-preview.png)
+
+*Windows DSH Web UI — 開発者プレビューの通知*
+
+![Windows DSH Web UI: 空の API キー設定](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*Windows DSH Web UI — 空の API キー設定*
+
+![Windows DSH Web UI: workspace 未選択のホーム](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — workspace 未選択のホーム*
+
+![Windows DSH Web UI: キー欄が空のモデル設定](assets/screenshots/windows-04-model-settings.png)
+
+*Windows DSH Web UI — キー欄が空のモデル設定*
+
+![Windows DSH Web UI: 133 件のプラグイン一覧](assets/screenshots/windows-05-plugin-inventory.png)
+
+*Windows DSH Web UI — 133 件のプラグイン一覧*
+
 ## 1. 何をインストールするか
 
 Ultimate は profile インストーラであり、モデルや DeepSeek AI 公式デスクトップアプリではありません。ライセンス確認済み、版固定済み、重複なしの実用プラグインセットを提供しますが、モデルアカウントは自分のものを使います。

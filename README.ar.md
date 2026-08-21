@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: دليل المبتدئين](TUTORIAL.ar.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## دليل مرئي
+
+هذه اللقطات من profile نظيف بلا جلسات أو بيانات اعتماد أو بيانات workspace خاصة. صور macOS تعرض الغلاف الأصلي، وصور Windows تعرض واجهة DSH Web UI نفسها على runner حقيقي.
+
+![تطبيق macOS الأصلي: الصفحة الرئيسية بلا workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*تطبيق macOS الأصلي — الصفحة الرئيسية بلا workspace*
+
+![واجهة DSH Web UI في Windows: الصفحة الرئيسية بلا workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*واجهة DSH Web UI في Windows — الصفحة الرئيسية بلا workspace*
+
 ## لماذا يوجد Ultimate
 
 ينمو نظام DSH بسرعة. مقارنة وظائف وتراخيص وإصدارات وصلاحيات وتداخلات عشرات المستودعات عمل بحد ذاته. يسجل Ultimate اختياراً قابلاً للتدقيق في manifest عام.

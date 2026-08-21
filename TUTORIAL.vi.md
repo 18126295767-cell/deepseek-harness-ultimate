@@ -6,6 +6,50 @@ Hướng dẫn này dành cho người chưa từng dùng terminal. Hãy làm th
 
 [Quay lại giới thiệu](README.vi.md)
 
+## Hướng dẫn trực quan
+
+Ảnh chụp lấy từ profile sạch, không có session, thông tin xác thực hay dữ liệu workspace riêng. Ảnh macOS cho thấy shell gốc; ảnh Windows cho thấy cùng DSH Web UI trên runner Windows thật.
+
+![Ứng dụng macOS gốc: Thông báo bản xem trước](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Ứng dụng macOS gốc — Thông báo bản xem trước*
+
+![Ứng dụng macOS gốc: Thiết lập API key trống](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Ứng dụng macOS gốc — Thiết lập API key trống*
+
+![Ứng dụng macOS gốc: Trang chủ chưa có workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Ứng dụng macOS gốc — Trang chủ chưa có workspace*
+
+![Ứng dụng macOS gốc: Cài đặt model với ô khóa trống](assets/screenshots/macos-04-model-settings.jpg)
+
+*Ứng dụng macOS gốc — Cài đặt model với ô khóa trống*
+
+![Ứng dụng macOS gốc: Danh mục 133 plugin](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Ứng dụng macOS gốc — Danh mục 133 plugin*
+
+![DSH Web UI trên Windows: Thông báo bản xem trước](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI trên Windows — Thông báo bản xem trước*
+
+![DSH Web UI trên Windows: Thiết lập API key trống](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI trên Windows — Thiết lập API key trống*
+
+![DSH Web UI trên Windows: Trang chủ chưa có workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI trên Windows — Trang chủ chưa có workspace*
+
+![DSH Web UI trên Windows: Cài đặt model với ô khóa trống](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI trên Windows — Cài đặt model với ô khóa trống*
+
+![DSH Web UI trên Windows: Danh mục 133 plugin](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI trên Windows — Danh mục 133 plugin*
+
 ## 1. Sẽ cài đặt gì
 
 Ultimate là trình cài đặt profile, không phải mô hình hay ứng dụng desktop chính thức của DeepSeek AI. Nó cung cấp bộ plugin thực tế không trùng lặp, đã kiểm tra giấy phép và cố định phiên bản; bạn vẫn cần tài khoản mô hình của mình.

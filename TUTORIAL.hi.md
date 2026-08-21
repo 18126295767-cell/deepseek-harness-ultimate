@@ -6,6 +6,50 @@
 
 [परिचय पर लौटें](README.hi.md)
 
+## दृश्य मार्गदर्शिका
+
+ये स्क्रीनशॉट ऐसे साफ profile से हैं जिनमें session, credentials या निजी workspace data नहीं है। macOS चित्र native shell दिखाते हैं; Windows चित्र असली Windows runner पर साझा DSH Web UI दिखाते हैं।
+
+![macOS native app: Developer preview सूचना](assets/screenshots/macos-01-developer-preview.jpg)
+
+*macOS native app — Developer preview सूचना*
+
+![macOS native app: खाली API key onboarding](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*macOS native app — खाली API key onboarding*
+
+![macOS native app: खाली workspace home](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS native app — खाली workspace home*
+
+![macOS native app: खाली key field वाला model settings](assets/screenshots/macos-04-model-settings.jpg)
+
+*macOS native app — खाली key field वाला model settings*
+
+![macOS native app: 133 plugins का inventory](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*macOS native app — 133 plugins का inventory*
+
+![Windows DSH Web UI: Developer preview सूचना](assets/screenshots/windows-01-developer-preview.png)
+
+*Windows DSH Web UI — Developer preview सूचना*
+
+![Windows DSH Web UI: खाली API key onboarding](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*Windows DSH Web UI — खाली API key onboarding*
+
+![Windows DSH Web UI: खाली workspace home](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — खाली workspace home*
+
+![Windows DSH Web UI: खाली key field वाला model settings](assets/screenshots/windows-04-model-settings.png)
+
+*Windows DSH Web UI — खाली key field वाला model settings*
+
+![Windows DSH Web UI: 133 plugins का inventory](assets/screenshots/windows-05-plugin-inventory.png)
+
+*Windows DSH Web UI — 133 plugins का inventory*
+
 ## 1. क्या स्थापित होगा
 
 Ultimate एक profile installer है, model या DeepSeek AI का official desktop app नहीं। यह license-reviewed, version-pinned और duplicate-free practical plugin selection देता है; आपको अपना model account फिर भी चाहिए।

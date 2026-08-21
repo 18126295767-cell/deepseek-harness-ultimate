@@ -6,6 +6,50 @@ Deze gids gaat ervan uit dat u nog nooit een terminal hebt gebruikt. Volg de sta
 
 [Terug naar de introductie](README.nl.md)
 
+## Visuele gids
+
+Deze screenshots komen uit schone profielen zonder sessies, inloggegevens of privégegevens. macOS toont de native shell; Windows toont dezelfde DSH Web UI op een echte Windows-runner.
+
+![Native macOS-app: Melding voor ontwikkelaarspreview](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Native macOS-app — Melding voor ontwikkelaarspreview*
+
+![Native macOS-app: Onboarding met lege API-sleutel](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Native macOS-app — Onboarding met lege API-sleutel*
+
+![Native macOS-app: Start zonder workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Native macOS-app — Start zonder workspace*
+
+![Native macOS-app: Modelinstellingen met leeg sleutelveld](assets/screenshots/macos-04-model-settings.jpg)
+
+*Native macOS-app — Modelinstellingen met leeg sleutelveld*
+
+![Native macOS-app: Plugininventaris met 133 items](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Native macOS-app — Plugininventaris met 133 items*
+
+![DSH Web UI voor Windows: Melding voor ontwikkelaarspreview](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI voor Windows — Melding voor ontwikkelaarspreview*
+
+![DSH Web UI voor Windows: Onboarding met lege API-sleutel](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI voor Windows — Onboarding met lege API-sleutel*
+
+![DSH Web UI voor Windows: Start zonder workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI voor Windows — Start zonder workspace*
+
+![DSH Web UI voor Windows: Modelinstellingen met leeg sleutelveld](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI voor Windows — Modelinstellingen met leeg sleutelveld*
+
+![DSH Web UI voor Windows: Plugininventaris met 133 items](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI voor Windows — Plugininventaris met 133 items*
+
 ## 1. Wat wordt geïnstalleerd
 
 Ultimate is een profile-installer, geen model en geen officiële DeepSeek AI-desktopapp. Hij biedt een praktische selectie zonder dubbelen, met gecontroleerde licenties en vaste versies; u hebt nog steeds uw eigen modelaccount nodig.

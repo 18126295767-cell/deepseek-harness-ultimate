@@ -6,6 +6,50 @@ Questa guida presuppone che tu non abbia mai usato un terminale. Segui i passagg
 
 [Torna alla presentazione](README.it.md)
 
+## Guida visiva
+
+Queste schermate provengono da profile puliti senza sessioni, credenziali o dati privati del workspace. Le immagini macOS mostrano lo shell nativo; quelle Windows mostrano la DSH Web UI condivisa su un runner Windows reale.
+
+![App nativa macOS: Avviso di anteprima per sviluppatori](assets/screenshots/macos-01-developer-preview.jpg)
+
+*App nativa macOS — Avviso di anteprima per sviluppatori*
+
+![App nativa macOS: Onboarding con API Key vuota](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*App nativa macOS — Onboarding con API Key vuota*
+
+![App nativa macOS: Home senza workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*App nativa macOS — Home senza workspace*
+
+![App nativa macOS: Impostazioni modello con chiave vuota](assets/screenshots/macos-04-model-settings.jpg)
+
+*App nativa macOS — Impostazioni modello con chiave vuota*
+
+![App nativa macOS: Inventario di 133 plugin](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*App nativa macOS — Inventario di 133 plugin*
+
+![DSH Web UI Windows: Avviso di anteprima per sviluppatori](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI Windows — Avviso di anteprima per sviluppatori*
+
+![DSH Web UI Windows: Onboarding con API Key vuota](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI Windows — Onboarding con API Key vuota*
+
+![DSH Web UI Windows: Home senza workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI Windows — Home senza workspace*
+
+![DSH Web UI Windows: Impostazioni modello con chiave vuota](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI Windows — Impostazioni modello con chiave vuota*
+
+![DSH Web UI Windows: Inventario di 133 plugin](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI Windows — Inventario di 133 plugin*
+
 ## 1. Cosa viene installato
 
 Ultimate è un installer di profile, non un modello né un’app desktop ufficiale di DeepSeek AI. Offre una selezione pratica senza duplicati, con licenze verificate e versioni fissate; il tuo account modello resta necessario.

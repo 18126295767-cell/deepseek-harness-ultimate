@@ -6,6 +6,50 @@
 
 [العودة إلى المقدمة](README.ar.md)
 
+## دليل مرئي
+
+هذه اللقطات من profile نظيف بلا جلسات أو بيانات اعتماد أو بيانات workspace خاصة. صور macOS تعرض الغلاف الأصلي، وصور Windows تعرض واجهة DSH Web UI نفسها على runner حقيقي.
+
+![تطبيق macOS الأصلي: تنبيه المعاينة للمطورين](assets/screenshots/macos-01-developer-preview.jpg)
+
+*تطبيق macOS الأصلي — تنبيه المعاينة للمطورين*
+
+![تطبيق macOS الأصلي: إعداد مفتاح API فارغ](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*تطبيق macOS الأصلي — إعداد مفتاح API فارغ*
+
+![تطبيق macOS الأصلي: الصفحة الرئيسية بلا workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*تطبيق macOS الأصلي — الصفحة الرئيسية بلا workspace*
+
+![تطبيق macOS الأصلي: إعداد النماذج بحقل مفتاح فارغ](assets/screenshots/macos-04-model-settings.jpg)
+
+*تطبيق macOS الأصلي — إعداد النماذج بحقل مفتاح فارغ*
+
+![تطبيق macOS الأصلي: جرد 133 إضافة](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*تطبيق macOS الأصلي — جرد 133 إضافة*
+
+![واجهة DSH Web UI في Windows: تنبيه المعاينة للمطورين](assets/screenshots/windows-01-developer-preview.png)
+
+*واجهة DSH Web UI في Windows — تنبيه المعاينة للمطورين*
+
+![واجهة DSH Web UI في Windows: إعداد مفتاح API فارغ](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*واجهة DSH Web UI في Windows — إعداد مفتاح API فارغ*
+
+![واجهة DSH Web UI في Windows: الصفحة الرئيسية بلا workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*واجهة DSH Web UI في Windows — الصفحة الرئيسية بلا workspace*
+
+![واجهة DSH Web UI في Windows: إعداد النماذج بحقل مفتاح فارغ](assets/screenshots/windows-04-model-settings.png)
+
+*واجهة DSH Web UI في Windows — إعداد النماذج بحقل مفتاح فارغ*
+
+![واجهة DSH Web UI في Windows: جرد 133 إضافة](assets/screenshots/windows-05-plugin-inventory.png)
+
+*واجهة DSH Web UI في Windows — جرد 133 إضافة*
+
 ## 1. ما الذي سيتم تثبيته
 
 Ultimate هو مثبت profile وليس نموذجاً أو تطبيق سطح مكتب رسمياً من DeepSeek AI. يقدم مجموعة إضافات عملية بلا تكرار ومراجعة الترخيص وتثبيت الإصدار؛ وما زلت تحتاج حساب النموذج الخاص بك.

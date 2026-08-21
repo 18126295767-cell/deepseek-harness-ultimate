@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: hướng dẫn cho người mới](TUTORIAL.vi.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## Hướng dẫn trực quan
+
+Ảnh chụp lấy từ profile sạch, không có session, thông tin xác thực hay dữ liệu workspace riêng. Ảnh macOS cho thấy shell gốc; ảnh Windows cho thấy cùng DSH Web UI trên runner Windows thật.
+
+![Ứng dụng macOS gốc: Trang chủ chưa có workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Ứng dụng macOS gốc — Trang chủ chưa có workspace*
+
+![DSH Web UI trên Windows: Trang chủ chưa có workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI trên Windows — Trang chủ chưa có workspace*
+
 ## Vì sao có Ultimate
 
 Hệ sinh thái DSH phát triển rất nhanh. So sánh chức năng, giấy phép, phiên bản, quyền và phần chồng chéo của hàng chục kho đã là một công việc. Ultimate ghi lại lựa chọn có thể kiểm tra trong manifest công khai.

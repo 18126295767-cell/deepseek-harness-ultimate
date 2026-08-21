@@ -6,6 +6,50 @@ Bu kılavuz hiç terminal kullanmamış kişileri hedefler. Adımları sırayla 
 
 [Tanıtıma dön](README.tr.md)
 
+## Görsel rehber
+
+Bu ekran görüntüleri oturum, kimlik bilgisi veya özel workspace verisi olmayan temiz profile kaynaklanır. macOS görselleri yerel kabuğu, Windows görselleri gerçek bir Windows runner üzerindeki ortak DSH Web UI’yi gösterir.
+
+![Yerel macOS uygulaması: Geliştirici önizleme bildirimi](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Yerel macOS uygulaması — Geliştirici önizleme bildirimi*
+
+![Yerel macOS uygulaması: Boş API anahtarı kurulumu](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Yerel macOS uygulaması — Boş API anahtarı kurulumu*
+
+![Yerel macOS uygulaması: Boş workspace ana sayfası](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Yerel macOS uygulaması — Boş workspace ana sayfası*
+
+![Yerel macOS uygulaması: Anahtar alanı boş model ayarları](assets/screenshots/macos-04-model-settings.jpg)
+
+*Yerel macOS uygulaması — Anahtar alanı boş model ayarları*
+
+![Yerel macOS uygulaması: 133 eklentilik envanter](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Yerel macOS uygulaması — 133 eklentilik envanter*
+
+![Windows DSH Web UI: Geliştirici önizleme bildirimi](assets/screenshots/windows-01-developer-preview.png)
+
+*Windows DSH Web UI — Geliştirici önizleme bildirimi*
+
+![Windows DSH Web UI: Boş API anahtarı kurulumu](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*Windows DSH Web UI — Boş API anahtarı kurulumu*
+
+![Windows DSH Web UI: Boş workspace ana sayfası](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — Boş workspace ana sayfası*
+
+![Windows DSH Web UI: Anahtar alanı boş model ayarları](assets/screenshots/windows-04-model-settings.png)
+
+*Windows DSH Web UI — Anahtar alanı boş model ayarları*
+
+![Windows DSH Web UI: 133 eklentilik envanter](assets/screenshots/windows-05-plugin-inventory.png)
+
+*Windows DSH Web UI — 133 eklentilik envanter*
+
 ## 1. Ne kuruluyor
 
 Ultimate bir profile yükleyicisidir; model veya resmi DeepSeek AI masaüstü uygulaması değildir. Lisansı incelenmiş, sürümü sabitlenmiş, tekrarsız pratik eklenti seçimi sunar; kendi model hesabınızı kullanmanız gerekir.

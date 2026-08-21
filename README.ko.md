@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: 초보자 안내서](TUTORIAL.ko.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## 화면 안내
+
+세션, 자격 증명, 개인 workspace 데이터가 없는 깨끗한 profile에서 캡처했습니다. macOS 이미지는 네이티브 셸을, Windows 이미지는 실제 Windows runner에서 렌더링한 공통 DSH Web UI를 보여 줍니다.
+
+![macOS 네이티브 앱: workspace가 비어 있는 홈](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS 네이티브 앱 — workspace가 비어 있는 홈*
+
+![Windows DSH Web UI: workspace가 비어 있는 홈](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — workspace가 비어 있는 홈*
+
 ## Ultimate가 필요한 이유
 
 DSH 생태계는 빠르게 성장합니다. 수십 개 저장소의 기능, 라이선스, 버전, 권한, 중복을 비교하는 일 자체가 작업입니다. Ultimate는 감사 가능한 선택을 공개 manifest에 기록합니다.

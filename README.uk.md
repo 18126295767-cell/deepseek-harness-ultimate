@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: посібник для початківців](TUTORIAL.uk.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## Візуальний гід
+
+Ці знімки зроблено з чистих profile без сесій, облікових даних і приватних даних workspace. Зображення macOS показують нативну оболонку, а Windows — той самий DSH Web UI на справжньому Windows runner.
+
+![Нативна програма macOS: Домашня сторінка без workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Нативна програма macOS — Домашня сторінка без workspace*
+
+![DSH Web UI у Windows: Домашня сторінка без workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI у Windows — Домашня сторінка без workspace*
+
 ## Навіщо потрібен Ultimate
 
 Екосистема DSH швидко зростає. Порівняння функцій, ліцензій, версій, дозволів і перетинів десятків репозиторіїв саме по собі є роботою. Ultimate записує перевірюваний вибір у публічному manifest.

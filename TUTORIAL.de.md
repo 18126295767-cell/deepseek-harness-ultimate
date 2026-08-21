@@ -6,6 +6,50 @@ Diese Anleitung setzt keine Terminal- oder Programmierkenntnisse voraus. Folgen 
 
 [Zurück zur Einführung](README.de.md)
 
+## Bilder zur Orientierung
+
+Diese Aufnahmen stammen aus sauberen Profilen ohne Sitzungen, Zugangsdaten oder private Workspace-Daten. Die macOS-Bilder zeigen die native Hülle; die Windows-Bilder zeigen dieselbe DSH Web UI auf einem echten Windows-Runner.
+
+![Native macOS-App: Hinweis zur Entwicklervorschau](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Native macOS-App — Hinweis zur Entwicklervorschau*
+
+![Native macOS-App: Einrichtung mit leerem API-Key](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Native macOS-App — Einrichtung mit leerem API-Key*
+
+![Native macOS-App: Startseite ohne Workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Native macOS-App — Startseite ohne Workspace*
+
+![Native macOS-App: Modelle mit leerem Schlüsselfeld](assets/screenshots/macos-04-model-settings.jpg)
+
+*Native macOS-App — Modelle mit leerem Schlüsselfeld*
+
+![Native macOS-App: Plugin-Inventar mit 133 Einträgen](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Native macOS-App — Plugin-Inventar mit 133 Einträgen*
+
+![DSH Web UI unter Windows: Hinweis zur Entwicklervorschau](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI unter Windows — Hinweis zur Entwicklervorschau*
+
+![DSH Web UI unter Windows: Einrichtung mit leerem API-Key](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI unter Windows — Einrichtung mit leerem API-Key*
+
+![DSH Web UI unter Windows: Startseite ohne Workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI unter Windows — Startseite ohne Workspace*
+
+![DSH Web UI unter Windows: Modelle mit leerem Schlüsselfeld](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI unter Windows — Modelle mit leerem Schlüsselfeld*
+
+![DSH Web UI unter Windows: Plugin-Inventar mit 133 Einträgen](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI unter Windows — Plugin-Inventar mit 133 Einträgen*
+
 ## 1. Was wird installiert?
 
 Ultimate ist ein Profil-Installer, kein Modell und keine offizielle DeepSeek-AI-Desktop-App. Es liefert eine geprüfte, versionsfixierte und doppelfreie Plugin-Auswahl; Ihr eigenes Modellkonto bleibt erforderlich.

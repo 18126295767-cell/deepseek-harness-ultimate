@@ -6,6 +6,50 @@
 
 [Вернуться к описанию](README.ru.md)
 
+## Наглядный обзор
+
+Эти снимки сделаны из чистых profile без сессий, учётных данных и личных данных workspace. На macOS показана нативная оболочка, а на Windows — та же DSH Web UI на настоящем Windows runner.
+
+![Нативное приложение macOS: Уведомление о предварительной версии](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Нативное приложение macOS — Уведомление о предварительной версии*
+
+![Нативное приложение macOS: Настройка с пустым API-ключом](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Нативное приложение macOS — Настройка с пустым API-ключом*
+
+![Нативное приложение macOS: Главная страница без workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Нативное приложение macOS — Главная страница без workspace*
+
+![Нативное приложение macOS: Модели с пустым полем ключа](assets/screenshots/macos-04-model-settings.jpg)
+
+*Нативное приложение macOS — Модели с пустым полем ключа*
+
+![Нативное приложение macOS: Инвентарь из 133 плагинов](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Нативное приложение macOS — Инвентарь из 133 плагинов*
+
+![DSH Web UI в Windows: Уведомление о предварительной версии](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI в Windows — Уведомление о предварительной версии*
+
+![DSH Web UI в Windows: Настройка с пустым API-ключом](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI в Windows — Настройка с пустым API-ключом*
+
+![DSH Web UI в Windows: Главная страница без workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI в Windows — Главная страница без workspace*
+
+![DSH Web UI в Windows: Модели с пустым полем ключа](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI в Windows — Модели с пустым полем ключа*
+
+![DSH Web UI в Windows: Инвентарь из 133 плагинов](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI в Windows — Инвентарь из 133 плагинов*
+
 ## 1. Что устанавливается
 
 Ultimate - это установщик profile, а не модель и не официальное настольное приложение DeepSeek AI. Он дает проверенный набор плагинов без дубликатов и с закрепленными версиями; учетная запись модели должна быть вашей.

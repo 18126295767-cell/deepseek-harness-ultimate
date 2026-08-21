@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: 初心者向けガイド](TUTORIAL.ja.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## 画面ガイド
+
+これらはセッション、認証情報、個人の workspace データを含まないクリーンな profile から取得しました。macOS はネイティブシェル、Windows は実際の Windows runner 上の共通 DSH Web UI です。
+
+![macOS ネイティブ App: workspace 未選択のホーム](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS ネイティブ App — workspace 未選択のホーム*
+
+![Windows DSH Web UI: workspace 未選択のホーム](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — workspace 未選択のホーム*
+
 ## Ultimate が必要な理由
 
 DSH のエコシステムは急速に成長しています。数十のリポジトリの機能、ライセンス、版、権限、重複を比較すること自体が仕事です。Ultimate は監査可能な選択を公開 manifest に記録します。

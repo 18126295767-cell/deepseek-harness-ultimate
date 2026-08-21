@@ -6,6 +6,50 @@ Panduan ini menganggap Anda belum pernah memakai terminal. Ikuti langkah secara 
 
 [Kembali ke pengantar](README.id.md)
 
+## Panduan visual
+
+Tangkapan ini berasal dari profile bersih tanpa sesi, kredensial, atau data workspace pribadi. Gambar macOS menampilkan shell native; gambar Windows menampilkan DSH Web UI yang sama pada runner Windows nyata.
+
+![Aplikasi native macOS: Pemberitahuan pratinjau pengembang](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Aplikasi native macOS — Pemberitahuan pratinjau pengembang*
+
+![Aplikasi native macOS: Onboarding API key kosong](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Aplikasi native macOS — Onboarding API key kosong*
+
+![Aplikasi native macOS: Beranda tanpa workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Aplikasi native macOS — Beranda tanpa workspace*
+
+![Aplikasi native macOS: Pengaturan model dengan kolom kunci kosong](assets/screenshots/macos-04-model-settings.jpg)
+
+*Aplikasi native macOS — Pengaturan model dengan kolom kunci kosong*
+
+![Aplikasi native macOS: Inventaris 133 plugin](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Aplikasi native macOS — Inventaris 133 plugin*
+
+![DSH Web UI Windows: Pemberitahuan pratinjau pengembang](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI Windows — Pemberitahuan pratinjau pengembang*
+
+![DSH Web UI Windows: Onboarding API key kosong](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI Windows — Onboarding API key kosong*
+
+![DSH Web UI Windows: Beranda tanpa workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI Windows — Beranda tanpa workspace*
+
+![DSH Web UI Windows: Pengaturan model dengan kolom kunci kosong](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI Windows — Pengaturan model dengan kolom kunci kosong*
+
+![DSH Web UI Windows: Inventaris 133 plugin](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI Windows — Inventaris 133 plugin*
+
 ## 1. Yang akan dipasang
 
 Ultimate adalah installer profile, bukan model atau aplikasi desktop resmi DeepSeek AI. Ia menyediakan pilihan plugin praktis tanpa duplikasi, dengan lisensi diperiksa dan versi dikunci; Anda tetap memerlukan akun model sendiri.

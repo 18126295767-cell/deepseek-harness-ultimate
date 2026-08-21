@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: başlangıç kılavuzu](TUTORIAL.tr.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## Görsel rehber
+
+Bu ekran görüntüleri oturum, kimlik bilgisi veya özel workspace verisi olmayan temiz profile kaynaklanır. macOS görselleri yerel kabuğu, Windows görselleri gerçek bir Windows runner üzerindeki ortak DSH Web UI’yi gösterir.
+
+![Yerel macOS uygulaması: Boş workspace ana sayfası](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Yerel macOS uygulaması — Boş workspace ana sayfası*
+
+![Windows DSH Web UI: Boş workspace ana sayfası](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — Boş workspace ana sayfası*
+
 ## Ultimate neden var
 
 DSH ekosistemi hızla büyüyor. Onlarca deponun özelliklerini, lisanslarını, sürümlerini, izinlerini ve örtüşmelerini karşılaştırmak başlı başına iştir. Ultimate denetlenebilir seçimi herkese açık bir manifestte kaydeder.

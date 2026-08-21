@@ -6,6 +6,50 @@
 
 [소개로 돌아가기](README.ko.md)
 
+## 화면 안내
+
+세션, 자격 증명, 개인 workspace 데이터가 없는 깨끗한 profile에서 캡처했습니다. macOS 이미지는 네이티브 셸을, Windows 이미지는 실제 Windows runner에서 렌더링한 공통 DSH Web UI를 보여 줍니다.
+
+![macOS 네이티브 앱: 개발자 프리뷰 알림](assets/screenshots/macos-01-developer-preview.jpg)
+
+*macOS 네이티브 앱 — 개발자 프리뷰 알림*
+
+![macOS 네이티브 앱: 빈 API 키 온보딩](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*macOS 네이티브 앱 — 빈 API 키 온보딩*
+
+![macOS 네이티브 앱: workspace가 비어 있는 홈](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS 네이티브 앱 — workspace가 비어 있는 홈*
+
+![macOS 네이티브 앱: 키 입력란이 비어 있는 모델 설정](assets/screenshots/macos-04-model-settings.jpg)
+
+*macOS 네이티브 앱 — 키 입력란이 비어 있는 모델 설정*
+
+![macOS 네이티브 앱: 133개 플러그인 목록](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*macOS 네이티브 앱 — 133개 플러그인 목록*
+
+![Windows DSH Web UI: 개발자 프리뷰 알림](assets/screenshots/windows-01-developer-preview.png)
+
+*Windows DSH Web UI — 개발자 프리뷰 알림*
+
+![Windows DSH Web UI: 빈 API 키 온보딩](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*Windows DSH Web UI — 빈 API 키 온보딩*
+
+![Windows DSH Web UI: workspace가 비어 있는 홈](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — workspace가 비어 있는 홈*
+
+![Windows DSH Web UI: 키 입력란이 비어 있는 모델 설정](assets/screenshots/windows-04-model-settings.png)
+
+*Windows DSH Web UI — 키 입력란이 비어 있는 모델 설정*
+
+![Windows DSH Web UI: 133개 플러그인 목록](assets/screenshots/windows-05-plugin-inventory.png)
+
+*Windows DSH Web UI — 133개 플러그인 목록*
+
 ## 1. 무엇을 설치하는가
 
 Ultimate는 profile 설치기이며 모델이나 DeepSeek AI 공식 데스크톱 앱이 아닙니다. 라이선스 확인, 버전 고정, 중복 제거된 실용 플러그인 모음을 제공하지만 모델 계정은 본인의 것을 사용해야 합니다.

@@ -6,6 +6,50 @@ Ten przewodnik zakłada, że nigdy nie używałeś terminala. Wykonuj kroki po k
 
 [Powrót do opisu](README.pl.md)
 
+## Przewodnik wizualny
+
+Zrzuty pochodzą z czystych profili bez sesji, danych logowania i prywatnych danych workspace. Obrazy macOS pokazują natywną powłokę, a obrazy Windows tę samą DSH Web UI na prawdziwym runnerze Windows.
+
+![Natywna aplikacja macOS: Informacja o wersji deweloperskiej](assets/screenshots/macos-01-developer-preview.jpg)
+
+*Natywna aplikacja macOS — Informacja o wersji deweloperskiej*
+
+![Natywna aplikacja macOS: Konfiguracja z pustym kluczem API](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*Natywna aplikacja macOS — Konfiguracja z pustym kluczem API*
+
+![Natywna aplikacja macOS: Strona bez workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*Natywna aplikacja macOS — Strona bez workspace*
+
+![Natywna aplikacja macOS: Ustawienia modeli z pustym polem klucza](assets/screenshots/macos-04-model-settings.jpg)
+
+*Natywna aplikacja macOS — Ustawienia modeli z pustym polem klucza*
+
+![Natywna aplikacja macOS: Inwentarz 133 wtyczek](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*Natywna aplikacja macOS — Inwentarz 133 wtyczek*
+
+![DSH Web UI w Windows: Informacja o wersji deweloperskiej](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI w Windows — Informacja o wersji deweloperskiej*
+
+![DSH Web UI w Windows: Konfiguracja z pustym kluczem API](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI w Windows — Konfiguracja z pustym kluczem API*
+
+![DSH Web UI w Windows: Strona bez workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI w Windows — Strona bez workspace*
+
+![DSH Web UI w Windows: Ustawienia modeli z pustym polem klucza](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI w Windows — Ustawienia modeli z pustym polem klucza*
+
+![DSH Web UI w Windows: Inwentarz 133 wtyczek](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI w Windows — Inwentarz 133 wtyczek*
+
 ## 1. Co zostanie zainstalowane
 
 Ultimate jest instalatorem profile, a nie modelem ani oficjalną aplikacją desktopową DeepSeek AI. Dostarcza praktyczny zestaw bez duplikatów, ze sprawdzonymi licencjami i przypiętymi wersjami; nadal potrzebujesz własnego konta modelu.

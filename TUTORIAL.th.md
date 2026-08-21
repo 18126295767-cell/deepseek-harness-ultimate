@@ -6,6 +6,50 @@
 
 [กลับไปบทแนะนำ](README.th.md)
 
+## คู่มือภาพ
+
+ภาพเหล่านี้มาจาก profile สะอาดที่ไม่มี session ข้อมูลรับรอง หรือข้อมูล workspace ส่วนตัว ภาพ macOS แสดง shell แบบเนทีฟ ส่วนภาพ Windows แสดง DSH Web UI เดียวกันบน runner Windows จริง
+
+![แอป macOS แบบเนทีฟ: ประกาศ developer preview](assets/screenshots/macos-01-developer-preview.jpg)
+
+*แอป macOS แบบเนทีฟ — ประกาศ developer preview*
+
+![แอป macOS แบบเนทีฟ: เริ่มต้นด้วย API key ว่าง](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*แอป macOS แบบเนทีฟ — เริ่มต้นด้วย API key ว่าง*
+
+![แอป macOS แบบเนทีฟ: หน้าแรกที่ยังไม่มี workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*แอป macOS แบบเนทีฟ — หน้าแรกที่ยังไม่มี workspace*
+
+![แอป macOS แบบเนทีฟ: ตั้งค่าโมเดลโดยเว้นช่องคีย์ว่าง](assets/screenshots/macos-04-model-settings.jpg)
+
+*แอป macOS แบบเนทีฟ — ตั้งค่าโมเดลโดยเว้นช่องคีย์ว่าง*
+
+![แอป macOS แบบเนทีฟ: รายการปลั๊กอิน 133 รายการ](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*แอป macOS แบบเนทีฟ — รายการปลั๊กอิน 133 รายการ*
+
+![DSH Web UI บน Windows: ประกาศ developer preview](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI บน Windows — ประกาศ developer preview*
+
+![DSH Web UI บน Windows: เริ่มต้นด้วย API key ว่าง](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI บน Windows — เริ่มต้นด้วย API key ว่าง*
+
+![DSH Web UI บน Windows: หน้าแรกที่ยังไม่มี workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI บน Windows — หน้าแรกที่ยังไม่มี workspace*
+
+![DSH Web UI บน Windows: ตั้งค่าโมเดลโดยเว้นช่องคีย์ว่าง](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI บน Windows — ตั้งค่าโมเดลโดยเว้นช่องคีย์ว่าง*
+
+![DSH Web UI บน Windows: รายการปลั๊กอิน 133 รายการ](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI บน Windows — รายการปลั๊กอิน 133 รายการ*
+
 ## 1. สิ่งที่จะติดตั้ง
 
 Ultimate เป็นตัวติดตั้ง profile ไม่ใช่โมเดลหรือ desktop app ทางการของ DeepSeek AI ให้ชุดปลั๊กอินที่ใช้งานจริง ไม่มีซ้ำ ตรวจสอบสัญญาอนุญาตและตรึงเวอร์ชันแล้ว แต่ยังต้องใช้บัญชีโมเดลของคุณเอง.

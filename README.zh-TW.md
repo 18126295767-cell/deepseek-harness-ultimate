@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate：零基礎教學](TUTORIAL.zh-TW.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## 圖文速覽
+
+以下截圖來自沒有工作階段、憑證或私人工作區資料的乾淨 profile。macOS 圖片展示原生外殼；Windows 圖片展示真實 Windows runner 渲染的共用 DSH Web UI。
+
+![macOS 原生 App: 空工作區首頁](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS 原生 App — 空工作區首頁*
+
+![Windows DSH Web UI: 空工作區首頁](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — 空工作區首頁*
+
 ## 為何需要 Ultimate
 
 DSH 生態成長很快，比較數十個儲存庫的功能、授權、版本、權限與重複程度本身就是一項工作。Ultimate 把選擇公開記錄在 manifest 中。

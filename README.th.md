@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: คู่มือสำหรับผู้เริ่มต้น](TUTORIAL.th.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## คู่มือภาพ
+
+ภาพเหล่านี้มาจาก profile สะอาดที่ไม่มี session ข้อมูลรับรอง หรือข้อมูล workspace ส่วนตัว ภาพ macOS แสดง shell แบบเนทีฟ ส่วนภาพ Windows แสดง DSH Web UI เดียวกันบน runner Windows จริง
+
+![แอป macOS แบบเนทีฟ: หน้าแรกที่ยังไม่มี workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*แอป macOS แบบเนทีฟ — หน้าแรกที่ยังไม่มี workspace*
+
+![DSH Web UI บน Windows: หน้าแรกที่ยังไม่มี workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI บน Windows — หน้าแรกที่ยังไม่มี workspace*
+
 ## เหตุผลที่มี Ultimate
 
 ระบบนิเวศ DSH เติบโตเร็วมาก การเปรียบเทียบความสามารถ สัญญาอนุญาต เวอร์ชัน สิทธิ์ และส่วนที่ซ้ำกันจากหลายสิบ repository เป็นงานในตัวเอง Ultimate บันทึกตัวเลือกที่ตรวจสอบได้ใน manifest สาธารณะ.

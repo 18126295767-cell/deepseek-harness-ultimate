@@ -8,6 +8,18 @@
 
 [DeepSeek Harness Ultimate: शुरुआती मार्गदर्शिका](TUTORIAL.hi.md) · [Windows](windows/README.md) · [COMPONENTS](COMPONENTS.md) · [EXCLUDED_COMPONENTS](EXCLUDED_COMPONENTS.md)
 
+## दृश्य मार्गदर्शिका
+
+ये स्क्रीनशॉट ऐसे साफ profile से हैं जिनमें session, credentials या निजी workspace data नहीं है। macOS चित्र native shell दिखाते हैं; Windows चित्र असली Windows runner पर साझा DSH Web UI दिखाते हैं।
+
+![macOS native app: खाली workspace home](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*macOS native app — खाली workspace home*
+
+![Windows DSH Web UI: खाली workspace home](assets/screenshots/windows-03-empty-workspace.png)
+
+*Windows DSH Web UI — खाली workspace home*
+
 ## Ultimate क्यों है
 
 DSH ecosystem तेजी से बढ़ रहा है। दर्जनों repositories के features, licenses, versions, permissions और overlaps की तुलना करना स्वयं एक काम है। Ultimate एक सार्वजनिक manifest में audit योग्य चयन दर्ज करता है।

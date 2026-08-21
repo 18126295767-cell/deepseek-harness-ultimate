@@ -6,6 +6,50 @@ Este guia pressupõe que você nunca usou um terminal. Siga os passos em ordem e
 
 [Voltar à apresentação](README.pt-BR.md)
 
+## Guia visual
+
+Estas capturas vêm de profiles limpos, sem sessões, credenciais ou dados privados. As imagens do macOS mostram o shell nativo; as do Windows mostram a mesma DSH Web UI em um runner Windows real.
+
+![App nativo do macOS: Aviso de prévia para desenvolvedores](assets/screenshots/macos-01-developer-preview.jpg)
+
+*App nativo do macOS — Aviso de prévia para desenvolvedores*
+
+![App nativo do macOS: Onboarding com API Key vazia](assets/screenshots/macos-02-api-key-onboarding.jpg)
+
+*App nativo do macOS — Onboarding com API Key vazia*
+
+![App nativo do macOS: Início sem workspace](assets/screenshots/macos-03-empty-workspace.jpg)
+
+*App nativo do macOS — Início sem workspace*
+
+![App nativo do macOS: Modelos com campo de chave vazio](assets/screenshots/macos-04-model-settings.jpg)
+
+*App nativo do macOS — Modelos com campo de chave vazio*
+
+![App nativo do macOS: Inventário com 133 plugins](assets/screenshots/macos-05-plugin-inventory.jpg)
+
+*App nativo do macOS — Inventário com 133 plugins*
+
+![DSH Web UI no Windows: Aviso de prévia para desenvolvedores](assets/screenshots/windows-01-developer-preview.png)
+
+*DSH Web UI no Windows — Aviso de prévia para desenvolvedores*
+
+![DSH Web UI no Windows: Onboarding com API Key vazia](assets/screenshots/windows-02-api-key-onboarding.png)
+
+*DSH Web UI no Windows — Onboarding com API Key vazia*
+
+![DSH Web UI no Windows: Início sem workspace](assets/screenshots/windows-03-empty-workspace.png)
+
+*DSH Web UI no Windows — Início sem workspace*
+
+![DSH Web UI no Windows: Modelos com campo de chave vazio](assets/screenshots/windows-04-model-settings.png)
+
+*DSH Web UI no Windows — Modelos com campo de chave vazio*
+
+![DSH Web UI no Windows: Inventário com 133 plugins](assets/screenshots/windows-05-plugin-inventory.png)
+
+*DSH Web UI no Windows — Inventário com 133 plugins*
+
 ## 1. O que será instalado
 
 Ultimate é um instalador de profiles, não um modelo nem um aplicativo oficial da DeepSeek AI. Ele oferece uma seleção prática sem duplicações, com licenças revisadas e versões fixadas; você ainda usa sua própria conta de modelo.
