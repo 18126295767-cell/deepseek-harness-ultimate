@@ -33,7 +33,6 @@ jobs:
         shell: pwsh
         run: |
           npm ci --ignore-scripts
-          npm test
           npm run audit
 
       - name: Install screenshot runtime
@@ -79,9 +78,19 @@ jobs:
 
           $stdout = Join-Path $env:RUNNER_TEMP "ultimate-web.stdout.log"
           $stderr = Join-Path $env:RUNNER_TEMP "ultimate-web.stderr.log"
-          $server = Start-Process -FilePath "npx.cmd" -ArgumentList @(
-            "--yes", "@deepseek-ai/dsh@0.1.0-rc.7", "--profile", "ultimate", "web", "--port", "3080"
-          ) -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
+          $runtime = Join-Path $env:RUNNER_TEMP "dsh-runtime"
+          New-Item -ItemType Directory -Force -Path $runtime | Out-Null
+          Push-Location $runtime
+          try {
+            npm init -y | Out-Host
+            npm install --save-exact @deepseek-ai/dsh@0.1.0-rc.7 | Out-Host
+          } finally {
+            Pop-Location
+          }
+          $dshBin = Join-Path $runtime "node_modules\@deepseek-ai\dsh\lib\bin.js"
+          $server = Start-Process -FilePath "node.exe" -ArgumentList @(
+            $dshBin, "--profile", "ultimate", "--port", "3080"
+          ) -WorkingDirectory $runtime -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
           try {
             $response = $null
             $deadline = [DateTime]::UtcNow.AddSeconds(120)
@@ -99,12 +108,31 @@ jobs:
               throw "Ultimate Web runtime did not return HTTP 200 within 120 seconds."
             }
             node .\scripts\capture-windows-ui.mjs --url "http://127.0.0.1:3080/" --output .\windows-screenshots
+
+            $proof = Get-Content .\windows-screenshots\windows-screenshot-proof.json -Raw | ConvertFrom-Json
+            if ($proof.platform -ne "win32") { throw "Screenshot proof did not report Windows." }
+            if ($proof.runnerImage -ne "windows2025") { throw "Unexpected runner image: $($proof.runnerImage)" }
+            if ($proof.screenshots.Count -ne 5) { throw "Expected five Windows screenshots." }
+            foreach ($screenshot in $proof.screenshots) {
+              if ($screenshot.width -ne 1600 -or $screenshot.height -ne 1000) {
+                throw "Unexpected dimensions for $($screenshot.file)."
+              }
+              if ($screenshot.sha256 -notmatch '^[a-f0-9]{64}$') {
+                throw "Invalid SHA-256 for $($screenshot.file)."
+              }
+            }
           } finally {
             $server.Refresh()
             if (-not $server.HasExited) { & taskkill.exe /PID $server.Id /T /F | Out-Host }
             if (Test-Path $stdout) { Get-Content $stdout }
             if (Test-Path $stderr) { Get-Content $stderr }
           }
+
+      - name: Run repository tests with generated screenshot evidence
+        shell: pwsh
+        run: |
+          Copy-Item .\windows-screenshots\windows-*.png .\assets\screenshots\ -Force
+          npm test
 
       - name: Build Windows packages
         shell: pwsh
