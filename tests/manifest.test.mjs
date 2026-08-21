@@ -26,6 +26,24 @@ test('default components have no optional-only marker', () => {
   assert.ok(manifest.components.some((component) => component.default));
 });
 
+test('special distributions are pinned and reproducible', () => {
+  const spotlight = manifest.components.find((component) => component.package === '@0xsline/dsh-spotlight');
+  assert.equal(spotlight.distribution.type, 'npm');
+  assert.match(spotlight.distribution.integrity, /^sha512-/);
+  assert.deepEqual(spotlight.distribution.supportDependencies.map((dependency) => `${dependency.package}@${dependency.version}`), ['schemastery@3.18.0']);
+  assert.match(spotlight.distribution.supportDependencies[0].integrity, /^sha512-/);
+  for (const packageName of ['dsh-agent-team-gui', 'dsh-taskswarm']) {
+    const component = manifest.components.find((item) => item.package === packageName);
+    assert.equal(component.distribution.type, 'source-build');
+    assert.match(component.distribution.packageManager, /^(?:npm|pnpm@\d+\.\d+\.\d+)$/);
+  }
+  const installer = fs.readFileSync(path.join(root, 'scripts', 'install-ultimate.mjs'), 'utf8');
+  assert.match(installer, /registry integrity/);
+  assert.match(installer, /distribution\.integrity/);
+  assert.match(installer, /https:\/\/codeload\.github\.com/);
+  assert.match(installer, /const attempts = 4/);
+});
+
 test('generated profile includes the official base and Web app layers first', () => {
   const source = fs.readFileSync(path.join(root, 'scripts', 'install-ultimate.mjs'), 'utf8');
   assert.match(source, /const hostBundles = \['@deepseek-ai\/dsh-base', '@deepseek-ai\/dsh-web-app'\]/);
@@ -113,4 +131,18 @@ test('installed profile audit rejects a physical host-core copy', t => {
   const report = auditInstalledProfile(profile);
   assert.equal(report.ok, false);
   assert.equal(report.dependencyViolations[0].owner, 'broken-plugin');
+});
+
+test('installed profile audit rejects missing direct plugin entrypoints', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-ultimate-entrypoint-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const profile = path.join(root, 'profile');
+  const plugin = path.join(profile, 'node_modules', 'broken-plugin');
+  fs.mkdirSync(plugin, { recursive: true });
+  fs.writeFileSync(path.join(profile, 'package.json'), JSON.stringify({ dependencies: { 'broken-plugin': '1.0.0' } }));
+  fs.writeFileSync(path.join(plugin, 'package.json'), JSON.stringify({ name: 'broken-plugin', version: '1.0.0', main: 'lib/index.js' }));
+
+  const report = auditInstalledProfile(profile);
+  assert.equal(report.ok, false);
+  assert.deepEqual(report.directEntrypointFailures, [{ package: 'broken-plugin', entry: 'lib/index.js' }]);
 });

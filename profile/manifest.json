@@ -16,6 +16,18 @@
       "repository": "https://github.com/0xsline/dsh-spotlight.git",
       "commit": "dd7ef5ed160aa1a624559de16eafd4ea9406d7ed",
       "category": "productivity",
+      "distribution": {
+        "type": "npm",
+        "integrity": "sha512-xqJyEjLjFShNgliG1TCHJf0umTZzW12byg4YKAJ8r+SeZsJ+D733+lPmzHkX7mKu6rjF35d5e1iypesiEkaqTQ==",
+        "supportDependencies": [
+          {
+            "package": "schemastery",
+            "version": "3.18.0",
+            "integrity": "sha512-Jw2uxjoyyqc/yeurmChUEc/jbi8GsrdXV/KmqRUDZXJAXAmrJiPsz8vKa17l/VckyzljHZ9oGaul443CQiXxtA==",
+            "license": "MIT"
+          }
+        ]
+      },
       "default": true
     },
     {
@@ -66,6 +78,10 @@
       "repository": "https://github.com/toolclub/dsh-agent-team-gui.git",
       "commit": "3b56aa4dbe20cc128d710928d20c80404ec7fff6",
       "category": "coding",
+      "distribution": {
+        "type": "source-build",
+        "packageManager": "pnpm@9.15.4"
+      },
       "default": true
     },
     {
@@ -76,6 +92,11 @@
       "repository": "https://github.com/february2015/dsh-taskswarm.git",
       "commit": "032e2c9d228c20cab65fe0ea061d78a7c753ab8c",
       "category": "coding",
+      "distribution": {
+        "type": "source-build",
+        "packageManager": "npm",
+        "buildDependencies": ["@deepseek-ai/dsh@0.1.0-rc.7"]
+      },
       "default": true
     },
     {

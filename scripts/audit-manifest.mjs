@@ -25,6 +25,16 @@ for (const component of manifest.components) {
   if (!/^[0-9a-f]{40}$/.test(component.commit)) errors.push(`${component.package}: commit must be a 40-character lowercase SHA`);
   if (component.default && component.optional) errors.push(`${component.package}: cannot be both default and optional`);
   if (component.platform && !['macos', 'windows', 'linux'].includes(component.platform)) errors.push(`${component.package}: unsupported platform ${component.platform}`);
+  if (component.distribution) {
+    if (!['npm', 'source-build'].includes(component.distribution.type)) errors.push(`${component.package}: unsupported distribution type`);
+    if (component.distribution.type === 'npm' && !/^sha512-[A-Za-z0-9+/]+={0,2}$/.test(component.distribution.integrity || '')) errors.push(`${component.package}: npm distribution needs sha512 integrity`);
+    if (component.distribution.type === 'source-build' && !/^(?:npm|pnpm@\d+\.\d+\.\d+)$/.test(component.distribution.packageManager || '')) errors.push(`${component.package}: source-build needs a pinned package manager`);
+    for (const dependency of component.distribution.supportDependencies ?? []) {
+      if (!dependency.package || !/^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/.test(dependency.version || '')) errors.push(`${component.package}: support dependency needs an exact package and version`);
+      if (!/^sha512-[A-Za-z0-9+/]+={0,2}$/.test(dependency.integrity || '')) errors.push(`${component.package}: support dependency ${dependency.package || '<unknown>'} needs sha512 integrity`);
+      if (!allowed.has(dependency.license)) errors.push(`${component.package}: support dependency ${dependency.package || '<unknown>'} license ${dependency.license} is not allowed`);
+    }
+  }
 }
 
 if (errors.length) {

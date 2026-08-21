@@ -121,6 +121,7 @@ try {
     platform: os.platform(),
     release: os.release(),
     architecture: os.arch(),
+    runnerLabel: process.env.DSH_RUNNER_LABEL ?? null,
     runnerImage: process.env.ImageOS ?? null,
     commit: process.env.GITHUB_SHA ?? null,
     baseUrl,

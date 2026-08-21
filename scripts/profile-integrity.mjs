@@ -118,6 +118,21 @@ function scanNodeModules(nodeModules, packages = [], visited = new Set()) {
 export function auditInstalledProfile(profileDir, { runtimeDir = '' } = {}) {
   const profile = path.resolve(profileDir);
   const packages = scanNodeModules(path.join(profile, 'node_modules'));
+  const directEntrypointFailures = [];
+  const profileManifest = readJson(path.join(profile, 'package.json'));
+  for (const packageName of Object.keys(profileManifest?.dependencies ?? {})) {
+    const packageDirectory = path.join(profile, 'node_modules', ...packageName.split('/'));
+    const packageManifest = readJson(path.join(packageDirectory, 'package.json'));
+    if (!packageManifest) {
+      directEntrypointFailures.push({ package: packageName, entry: 'package.json' });
+      continue;
+    }
+    for (const entry of [packageManifest.main, packageManifest.dsh?.bundle?.patch].filter(Boolean)) {
+      if (!fs.existsSync(path.join(packageDirectory, entry))) {
+        directEntrypointFailures.push({ package: packageName, entry });
+      }
+    }
+  }
   const dependencyViolations = [];
   for (const pkg of packages) {
     for (const [dependency, range] of Object.entries(pkg.dependencies)) {
@@ -149,10 +164,11 @@ export function auditInstalledProfile(profileDir, { runtimeDir = '' } = {}) {
   }
 
   return {
-    ok: dependencyViolations.length === 0 && duplicateCorePackages.length === 0,
+    ok: dependencyViolations.length === 0 && duplicateCorePackages.length === 0 && directEntrypointFailures.length === 0,
     profileDir: profile,
     dependencyViolations,
     duplicateCorePackages,
+    directEntrypointFailures,
   };
 }
 
@@ -163,6 +179,9 @@ export function formatIntegrityFailures(report) {
   }
   for (const duplicate of report.duplicateCorePackages ?? []) {
     lines.push(`${duplicate.package} has separate host/profile copies: ${duplicate.hostPath} <> ${duplicate.profilePath}`);
+  }
+  for (const missing of report.directEntrypointFailures ?? []) {
+    lines.push(`${missing.package} is missing installed entry ${missing.entry}`);
   }
   return lines;
 }
