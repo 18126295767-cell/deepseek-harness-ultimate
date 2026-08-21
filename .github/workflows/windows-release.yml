@@ -29,6 +29,12 @@ jobs:
           node-version: 22.19.0
           cache: npm
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+          run_install: false
+
       - name: Install dependencies and run tests
         shell: pwsh
         run: |
@@ -59,6 +65,7 @@ jobs:
           if ($guideCount -ne 12) { throw "Expected 12 Windows language guides, found $guideCount." }
 
       - name: Reproduce and audit Windows profile
+        timeout-minutes: 8
         shell: pwsh
         run: |
           $env:DSH_HOME = Join-Path $env:RUNNER_TEMP "dsh-home"
@@ -76,7 +83,7 @@ jobs:
           Push-Location $runtime
           try {
             npm init -y | Out-Host
-            npm install --save-exact --ignore-scripts --no-audit --no-fund @deepseek-ai/dsh@0.1.0-rc.7 | Out-Host
+            pnpm add --save-exact --ignore-scripts @deepseek-ai/dsh@0.1.0-rc.7 | Out-Host
           } finally {
             Pop-Location
           }
